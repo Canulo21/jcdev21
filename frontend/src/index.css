@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@import "shadcn/tailwind.css";
+
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-primary: "Archivo", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+
+  --bg-primary: #1c1c1c;
+  --bg-secondary: #ff3300;
+  --bg-white: #ffffff;
+
+  --text-white: #ffff;
+  --text-primary: #1c1c1c;
+  --text-secondary: #ff3300;
+
+  --hover-text-white: #ffffff;
+  --hover-text-primary: #1c1c1c;
+  --hover-text-secondary: #ff3300;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Geist Variable", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+}
+
+/* Customize the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+/* Customize the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: var(--bg-primary); /* Light gray background */
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg-secondary); /* Your custom color */
+}
+
+/* Optional: Hover effect for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7; /* Darker shade when hovered */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-white);
+  font-family: var(--font-secondary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.wrap-1395 {
+  max-width: 1395px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary) !important;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem); /* 40px → 60px */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2.25rem, 4.5vw, 3.375rem); /* 36px → 54px */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(2rem, 4vw, 3.125rem); /* 32px → 50px */
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(1.75rem, 3.5vw, 2.875rem); /* 28px → 46px */
+  font-weight: 700;
+}
+
+h5 {
+  font-size: clamp(1.5rem, 3vw, 2.625rem); /* 24px → 42px */
+  font-weight: 700;
+}
+
+h6 {
+  font-size: clamp(1.25rem, 2.5vw, 2.375rem); /* 20px → 38px */
+  font-weight: 700;
+}
+
+.title {
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+.title span:last-child {
+  color: var(--bg-secondary);
+}
+
+.social-icons-group > a,
+.social-icons-group > a:hover {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+}
+.fb-icon {
+  background: url("./assets/images/facebook-icon-w.png") no-repeat center center;
+}
+.fb-icon:hover {
+  background: url("./assets/images/facebook-icon-r.png") no-repeat center center;
+}
+.linkedin-icon {
+  background: url("./assets/images/linkedin-solid-w.png") no-repeat center
+    center;
+}
+.linkedin-icon:hover {
+  background: url("./assets/images/linkedin-solid-r.png") no-repeat center
+    center;
+}
+.github-icon {
+  background: url("./assets/images/github-w.png") no-repeat center center;
+}
+.github-icon:hover {
+  background: url("./assets/images/github-r.png") no-repeat center center;
+}
+
+.git-calendar > .react-activity-calendar {
+  gap: 30px !important;
+}
+.git-calendar > .react-activity-calendar,
+.git-calendar > .react-activity-calendar svg {
+  width: 100% !important;
+}
+
+.text-w-line {
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  gap: 20px;
+}
+.text-w-line::after {
+  content: "";
+  flex: 1;
+  height: 0.5px;
+  background: var(--muted-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+section {
+  padding: 100px 0 !important;
+}
+
+@media only screen and (max-width: 1536px) {
+  .wrap-1395 {
+    max-width: 100%;
+    margin: 0 40px !important;
+  }
+  section {
+    padding: 80px 0 !important;
+  }
+
+  .title {
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .wrap-1395 {
+    max-width: 100%;
+    margin: 0 20px !important;
+  }
+  section {
+    padding: 60px 0 !important;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .title > p {
+    justify-content: center;
+  }
+}
