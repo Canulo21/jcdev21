@@ -5,13 +5,13 @@ function BeamsBgLayout() {
   return (
     <div className="absolute top-0 z-[-1] opacity-7 w-full h-full">
       <Beams
-        beamWidth={4.3}
-        beamHeight={10}
-        beamNumber={10}
+        beamWidth={2.3}
+        beamHeight={90}
+        beamNumber={90}
         lightColor="#fffdfd"
-        speed={4}
+        speed={6}
         noiseIntensity={1.1}
-        scale={0.2}
+        scale={0.3}
         rotation={30}
       />
     </div>

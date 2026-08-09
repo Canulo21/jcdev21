@@ -77,7 +77,7 @@ function FooterLayout() {
 
         <div>
           <p className="text-muted-foreground text-center md:text-left text-sm font-bold pt-5 border-t border-t-white/30">
-            © 2026 Jhon Carlo Canulo · jcdev21.vercel,app
+            © 2026 Jhon Carlo Canulo · jcdev21.vercel.app
           </p>
         </div>
       </SpotlightCard>

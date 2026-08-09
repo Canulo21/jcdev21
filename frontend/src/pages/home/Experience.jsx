@@ -107,7 +107,7 @@ export default function Experience() {
               {experience.company}
               <Typography
                 variant="body2"
-                className="text-muted-foreground !font-medium !text-xs"
+                className="text-muted-foreground !font-medium !text-xs !mt-2"
               >
                 {experience.address}
               </Typography>

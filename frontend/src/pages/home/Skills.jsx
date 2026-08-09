@@ -249,7 +249,7 @@ function Skills() {
           Tools & Integrations
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
+        <div className="grid pb-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
           {tools.map((tool, i) => {
             const Icon = tool.icon;
 
@@ -263,7 +263,7 @@ function Skills() {
                   {Icon && (
                     <Icon className="text-4xl text-[var(--bg-secondary)]" />
                   )}
-                  <p className="font-medium !text-sm text-center">
+                  <p className="font-medium text-xs sm:!text-sm text-center">
                     {tool.title}
                   </p>
                 </div>
