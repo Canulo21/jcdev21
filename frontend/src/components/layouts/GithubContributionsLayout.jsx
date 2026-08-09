@@ -19,7 +19,7 @@ export default function GithubContributionsLayout() {
     ease-in-out"
     >
       <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0 md:items-start justify-between mb-2 md:mb-8">
-        <div className="flex gap-3">
+        <div className="flex gap-3 ">
           <FaGithub className="mt-1 text-2xl" />
 
           <div>
@@ -34,7 +34,7 @@ export default function GithubContributionsLayout() {
           </div>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 flex-col sm:flex-row">
           <div className="flex rounded-full bg-[#1b1b1f] p-1">
             {years.map((y) => (
               <button

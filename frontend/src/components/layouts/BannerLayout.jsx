@@ -38,7 +38,7 @@ function BannerLayout() {
           />
 
           <TextType
-            className="text-4xl text-[var(--font-primary)] font-semibold text-[var(--text-secondary)] relative z-[5] "
+            className="text-2xl md:text-4xl text-[var(--font-primary)] font-semibold text-[var(--text-secondary)] relative z-[5] "
             text={[
               "Front-End Developer",
               "React Enthusiast",
@@ -55,7 +55,7 @@ function BannerLayout() {
             cursorBlinkDuration={0.5}
           />
 
-          <p className="text-lg text-muted-foreground mx-[40px] xl:mx-0  lg:max-w-[1100px] mt-6 relative z-[5]">
+          <p className="text-sm md:text-lg text-muted-foreground mx-[40px] xl:mx-0  lg:max-w-[1100px] mt-6 relative z-[5]">
             As a passionate self-taught front-end developer, I'm driven by
             curiosity and a love for crafting intuitive, responsive web
             experiences. My journey is fueled by continuous learning and a deep

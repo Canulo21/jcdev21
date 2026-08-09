@@ -61,8 +61,8 @@ function NavBar() {
 
   return (
     <>
-      <header className="h-[80px] xl:h-28 sticky top-0 z-50 border-t-[var(--bg-secondary)] border-t-3 flex items-center justify-between px-10 2xl:px-24 bg-[var(--bg-primary)]">
-        <a href="/" className="text-white text-5xl font-bold ">
+      <header className="h-[80px] xl:h-28 sticky top-0 z-50 border-t-[var(--bg-secondary)] border-t-3 flex items-center justify-between px-5 2xl:px-24 bg-[var(--bg-primary)]">
+        <a href="/" className="text-white text-3xl md:text-5xl font-bold ">
           JC <span className="text-[var(--text-secondary)]">Dev.</span>
         </a>
 
