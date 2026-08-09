@@ -43,7 +43,7 @@ function BackToTop() {
           behavior: "smooth",
         })
       }
-      className="bg-[var(--bg-secondary)] fixed w-[40px] h-[40px] right-2.5 lg:right-19 bottom-5 z-10"
+      className="bg-[var(--bg-secondary)] fixed w-[40px] h-[40px] right-5 2xl:right-19 bottom-5 z-10"
       aria-label="Back to top"
     >
       <FaArrowUp />

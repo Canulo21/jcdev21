@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
 
 export const links = [
   { id: "home", label: "Home" },
@@ -82,6 +83,10 @@ function NavBar() {
             </button>
           ))}
         </nav>
+
+        <div className="show lg:hidden">
+          <HamburgerMenu />
+        </div>
       </header>
     </>
   );

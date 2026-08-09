@@ -62,8 +62,9 @@ export default function GithubContributionsLayout() {
         </div>
       </div>
 
-      <div className="w-full git-calendar overflow-x-auto">
+      <div className="w-full git-calendar overflow-x-auto ">
         <GitHubCalendar
+          className="tester [&>footer]:flex-col [&>footer]:items-center sm:[&>footer]:flex-row sm:[&>footer]:items-start sm:[&>footer>div:last-child]:!ml-auto [&>footer>div:last-child]:!ml-0"
           username="Canulo21"
           year={year}
           blockSize={16}

@@ -29,7 +29,7 @@ function BannerLayout() {
             Hi, I'm
           </p>
           <WarpText
-            className=" relative z-[5] !min-h-[150px]"
+            className=" relative z-[5] !min-h-[95px] sm:!min-h-[150px]"
             text="Jhon Carlo"
             warpIntensity={0.1}
             fontFamily="inherit"

@@ -160,7 +160,7 @@ function Skills() {
           Fronted
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
           {frontends.map((frontend, i) => {
             const Icon = frontend.icon;
 
@@ -189,7 +189,7 @@ function Skills() {
           Backend & Data
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
           {backends.map((backend, i) => {
             const Icon = backend.icon;
 
@@ -220,7 +220,7 @@ function Skills() {
           CMS & E-commerce
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
           {cms.map((cm, i) => {
             const Icon = cm.icon;
 
@@ -249,7 +249,7 @@ function Skills() {
           Tools & Integrations
         </h6>
 
-        <div className="grid pb-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-10">
+        <div className="grid pb-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
           {tools.map((tool, i) => {
             const Icon = tool.icon;
 
