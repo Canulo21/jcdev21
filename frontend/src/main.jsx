@@ -6,8 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./index.css";
 import App from "./App.jsx";
 
-injectSpeedInsights();
-
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
