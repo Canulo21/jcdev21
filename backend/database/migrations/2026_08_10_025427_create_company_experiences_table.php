@@ -18,7 +18,7 @@ return new class extends Migration
               ->cascadeOnDelete();
             $table->string('position');
             $table->string('duration');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }
