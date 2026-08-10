@@ -9,67 +9,26 @@ import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 import Typography from "@mui/material/Typography";
 import BlurText from "@/components/layouts/utils/BlurText";
 import SpotlightCard from "@/components/layouts/utils/SpotlightCard";
-
-const experiences = [
-  {
-    company: "24 Creative Media Solutions Inc.",
-    address: "Alabang, Montinlupa City, Philippines",
-    icon: <LaptopMacIcon />,
-    roles: [
-      {
-        title: "Mid-Level Web Developer",
-        duration: "2023 - present",
-        descriptions: [
-          {
-            li: "Built dynamic websites using Advanced Custom Fields (ACF), custom post types, and custom taxonomies.",
-          },
-          {
-            li: "Implemented basic SEO best practices (meta tags, schema, image optimization).",
-          },
-          {
-            li: "Optimized website performance by improving Core Web Vitals, image loading, caching, and asset delivery.",
-          },
-        ],
-      },
-      {
-        title: "Junior Web Developer",
-        duration: "2021 - 2023",
-        descriptions: [
-          {
-            li: "Converted UI designs into fully responsive WordPress websites using HTML, CSS, JavaScript, jQuery, and PHP",
-          },
-          {
-            li: "Performed website maintenance, bug fixes, plugin updates, and content management",
-          },
-          {
-            li: "Resolved CSS, layout, and responsive design issues across desktop, tablet, and mobile devices",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    company: "Benpos System",
-    address: "Don Anselmo Bernad Avenue, Ozamiz City Misamis Occidental",
-    icon: <LaptopMacIcon />,
-    roles: [
-      {
-        title: "Programmer",
-        duration: "2021 - 2021",
-        descriptions: [
-          {
-            li: "Experienced in hardware installation, CCTV setup, RJ45 crimping, and basic network configuration",
-          },
-          {
-            li: "Maintained and enhanced legacy applications using C# and MySQL",
-          },
-        ],
-      },
-    ],
-  },
-];
+import { useEffect, useState } from "react";
+import apiFetch from "@/lib/api";
 
 export default function Experience() {
+  const [getCompany, setGetCompany] = useState([]);
+
+  const getCompanies = async () => {
+    try {
+      const data = await apiFetch("companies");
+      setGetCompany(data);
+      setGetCompany(data);
+    } catch (err) {
+      console.error("Failed to fetch companies:", err);
+    }
+  };
+
+  useEffect(() => {
+    getCompanies();
+  }, []);
+
   return (
     <>
       <h2 className="title">
@@ -93,7 +52,7 @@ export default function Experience() {
     sm:[&>li:nth-child(even)>div]:!text-left
   "
       >
-        {experiences.map((experience, index) => (
+        {getCompany.map((company, index) => (
           <TimelineItem key={index} className=" mt-5 sm:mt-0">
             <TimelineOppositeContent
               data-aos="fade-right"
@@ -104,12 +63,12 @@ export default function Experience() {
                 m: "auto 0",
               }}
             >
-              {experience.company}
+              {company.company_name}
               <Typography
                 variant="body2"
                 className="text-muted-foreground !font-medium !text-xs !mt-2"
               >
-                {experience.address}
+                {company.company_addresse}
               </Typography>
             </TimelineOppositeContent>
             <TimelineSeparator
@@ -118,7 +77,7 @@ export default function Experience() {
             >
               <TimelineConnector />
               <TimelineDot className="!bg-[var(--bg-secondary)] ">
-                {experience.icon}
+                <LaptopMacIcon />
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
@@ -131,10 +90,10 @@ export default function Experience() {
                 className="custom-spotlight-card "
                 spotlightColor="rgba(0, 229, 255, 0.2)"
               >
-                {experience.roles.map((role, roleIndex) => (
-                  <div key={roleIndex} className="mb-4 text-left">
+                {company.experiences.map((role, i) => (
+                  <div key={i} className="mb-4 text-left">
                     <Typography variant="h6" component="span">
-                      {role.title}
+                      {role.position}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -143,9 +102,9 @@ export default function Experience() {
                       {role.duration}
                     </Typography>
                     <ul className="mt-5 list-disc">
-                      {role.descriptions?.map((li, i) => (
-                        <li key={i} className="text-sm mt-4 text-white/70">
-                          {li.li}
+                      {role.description.split("\n").map((item, index) => (
+                        <li className="text-sm mt-4 text-white/70" key={index}>
+                          {item}
                         </li>
                       ))}
                     </ul>

@@ -160,7 +160,7 @@ function Skills() {
           Fronted
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {frontends.map((frontend, i) => {
             const Icon = frontend.icon;
 
@@ -172,9 +172,9 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-4xl text-[var(--bg-secondary)]" />
+                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
                   )}
-                  <p className="font-medium !text-sm text-center">
+                  <p className="font-medium text-[10px] md:!text-sm truncate text-center">
                     {frontend.title}
                   </p>
                 </div>
@@ -189,7 +189,7 @@ function Skills() {
           Backend & Data
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {backends.map((backend, i) => {
             const Icon = backend.icon;
 
@@ -201,9 +201,9 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-4xl text-[var(--bg-secondary)]" />
+                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
                   )}
-                  <p className="font-medium !text-sm text-center">
+                  <p className="font-medium text-[10px] md:!text-sm truncate text-center">
                     {backend.title}
                   </p>
                 </div>
@@ -220,7 +220,7 @@ function Skills() {
           CMS & E-commerce
         </h6>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {cms.map((cm, i) => {
             const Icon = cm.icon;
 
@@ -232,9 +232,11 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-4xl text-[var(--bg-secondary)]" />
+                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
                   )}
-                  <p className="font-medium !text-sm text-center">{cm.title}</p>
+                  <p className="font-medium text-[10px] md:!text-sm truncate text-center">
+                    {cm.title}
+                  </p>
                 </div>
               </div>
             );
@@ -249,7 +251,7 @@ function Skills() {
           Tools & Integrations
         </h6>
 
-        <div className="grid pb-0 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 xl:gap-8 py-6 sm:py-10">
+        <div className="grid pb-0 grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {tools.map((tool, i) => {
             const Icon = tool.icon;
 
@@ -261,9 +263,9 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-4xl text-[var(--bg-secondary)]" />
+                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
                   )}
-                  <p className="font-medium text-xs sm:!text-sm text-center">
+                  <p className="font-medium text-xs sm:text-[10px] md:!text-sm truncate text-center">
                     {tool.title}
                   </p>
                 </div>

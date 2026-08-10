@@ -123,7 +123,7 @@ function SlideShow() {
             <CarouselItem key={i}>
               <div className="p-1">
                 <SpotlightCard
-                  className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
+                  className="custom-spotlight-card relative  top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-1"
                   spotlightColor="rgba(0, 229, 255, 0.2)"
                 >
                   <Card className="bg-transparent">
@@ -133,14 +133,14 @@ function SlideShow() {
                       </div>
 
                       <div className="w-full">
-                        <h4 className="text-center md:text-right !text-lg !xl:text-2xl uppercase text-[var(--text-secondary)] !mb-5">
+                        <h4 className="text-center md:text-right !text-sm sm:!text-lg xl:!text-2xl uppercase text-[var(--text-secondary)] !mb-5">
                           {item.title}
                         </h4>
                         <div className="flex justify-between gap-8 items-center mb-">
                           <span className="text-xs xltext-md text-muted-foreground uppercase">
                             Provider:
                           </span>
-                          <p className="text-md xl:text-xl text-white font-medium uppercase truncate max-w-xl">
+                          <p className="text-xs sm:text-md xl:text-xl text-white font-medium uppercase truncate max-w-xl">
                             {item.provider}
                           </p>
                         </div>
@@ -148,7 +148,7 @@ function SlideShow() {
                           <span className="text-xs xltext-md text-muted-foreground uppercase">
                             Completed:
                           </span>
-                          <p className="text-md xl:text-xl text-white font-medium">
+                          <p className="text-xs sm:text-md xl:text-xl text-white font-medium">
                             {item.completed}
                           </p>
                         </div>
@@ -156,7 +156,7 @@ function SlideShow() {
                           <span className="text-xs xl:text-md text-muted-foreground uppercase">
                             credential id:
                           </span>
-                          <p className="text-xs xl:text-md text-muted-foreground truncate max-w-[150px] lg:max-w-xl">
+                          <p className="text-xs xl:text-md text-muted-foreground truncate max-w-[80px] sm:max-w-[150px] lg:max-w-xl">
                             {item.credential_id}
                           </p>
                         </div>
