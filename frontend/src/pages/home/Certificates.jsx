@@ -124,7 +124,7 @@ function SlideShow({ certificates }) {
                         {item.img ? (
                           <img src={item.img} alt={item.title} />
                         ) : (
-                          <div className="w-full h-[150px] bg-[var(--bg-primary)]">
+                          <div className="w-full h-[140px] bg-[var(--bg-primary)]">
                             <FaMedal size={80} color="#fff" />
                           </div>
                         )}
