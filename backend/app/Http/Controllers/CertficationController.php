@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class CertficationController extends Controller
 {
-    //
+    //Tester
+    
     public function index()
     {
         $certificates = Certification::get();
