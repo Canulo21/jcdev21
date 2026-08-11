@@ -138,7 +138,7 @@ function Projects() {
           </p>
         </div>
 
-        {/* Display  */}
+        {/* Display  Tester*/}
 
         <div className="grid  mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {getProject.map((item, i) => (
