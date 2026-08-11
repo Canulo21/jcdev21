@@ -11,13 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certifications', function (Blueprint $table) {
+        Schema::create('project_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('provider');
-            $table->string('completed');
-            $table->string('cred_id');
-            $table->string('url');
+            
+            $table->foreignId('project_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->foreignId('tag_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->unique(['project_id', 'tag_id']);
+
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certification');
+        Schema::dropIfExists('project_tags');
     }
 };

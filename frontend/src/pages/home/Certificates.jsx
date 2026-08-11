@@ -1,7 +1,6 @@
 import BlurText from "@/components/layouts/utils/BlurText";
-import cert1 from "../../assets/images/cert-1.png";
 import { Button } from "@/components/ui/button";
-import { FaBox, FaCheck, FaClipboardCheck, FaTv } from "react-icons/fa";
+import { FaBox, FaClipboardCheck, FaMedal, FaTv } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -15,97 +14,87 @@ import Autoplay from "embla-carousel-autoplay";
 
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import apiFetch from "@/lib/api";
 
-const certificates = [
-  {
-    title: "Build a Full Website using WordPRess",
-    img: cert1,
-    provider: "coursera",
-    completed: "March 21, 2025",
-    credential_id: "HUIWO1O0IWBH",
-    link: "https://www.coursera.org/account/accomplishments/certificate/HUIWO1O0IWBH",
-  },
-  {
-    title: "Build a free website with WordPress",
-    img: cert1,
-    provider: "coursera",
-    completed: "March 21, 2025",
-    credential_id: "2MWPPLV52AJM",
-    link: "https://www.coursera.org/account/accomplishments/certificate/2MWPPLV52AJM",
-  },
-  {
-    title: "Responsive Web Design",
-    img: cert1,
-    provider: "freeCodeCamp",
-    completed: "September 3, 2024",
-    credential_id: "fcc566e0508-11e0-4807-8f53-e278475f4367-rwd",
-    link: "https://www.freecodecamp.org/certification/fcc566e0508-11e0-4807-8f53-e278475f4367/responsive-web-design",
-  },
-];
+function Certificates() {
+  const [view, setView] = useState("gridview");
 
-function GridView() {
+  const handleChange = (event, nextView) => {
+    setView(nextView);
+  };
+
+  const [getCertificate, setGetCertificate] = useState([]);
+
+  const getCertificates = async () => {
+    try {
+      const data = await apiFetch("certifications");
+      setGetCertificate(data);
+    } catch (err) {
+      console.error("Failed to fetch certificates:", err);
+    }
+  };
+
+  useEffect(() => {
+    getCertificates();
+  }, []);
+
   return (
-    <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-      {certificates.map((item, i) => (
-        <div key={i} data-aos="fade-up">
-          <SpotlightCard
-            className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
-            spotlightColor="rgba(0, 229, 255, 0.2)"
-          >
-            <div>
-              <img
-                src={item.img}
-                alt={item.title}
-                className=" w-full lg:w-[300px]"
-              />
-              <p className="my-4 text-sm truncate uppercase font-semibold text-[var(--text-secondary)]">
-                {item.title}
-              </p>
+    <>
+      <style>
+        {`
+          .MuiButtonBase-root {
+            border: 1px solid var(--bg-secondary) !important;
+          }
+          .Mui-selected {
+            background: var(--bg-secondary) !important;
+          }
+      `}
+      </style>
+      <h2 className="title">
+        <BlurText
+          text="LICENSES & CERTIFICATIONS"
+          delay={90}
+          animateBy="words"
+          direction="top"
+        />
+      </h2>
 
-              <div className="mb-5">
-                <div className="flex justify-between gap-8">
-                  <span className="text-xs text-muted-foreground">
-                    Provider:
-                  </span>
-                  <p className="text-sm font-medium uppercase truncate max-w-48">
-                    {item.provider}
-                  </p>
-                </div>
-                <div className="flex justify-between gap-8">
-                  <span className="text-xs text-muted-foreground">
-                    Completed:
-                  </span>
-                  <p className="text-sm font-medium">{item.completed}</p>
-                </div>
-                <div className="flex justify-between gap-8">
-                  <span className="text-xs text-muted-foreground">
-                    credential id:
-                  </span>
-                  <p className="text-xs text-muted-foreground truncate max-w-[100px] xl:max-w-40">
-                    {item.credential_id}
-                  </p>
-                </div>
-              </div>
-              <Button
-                variant="secondary"
-                asChild
-                className="text-center w-full hover:bg-[var(--bg-secondary)] hover:text-white flex items-center gap-2 py-4 "
-              >
-                <a href={item.link} target="_blank" rel="noopener">
-                  <FaClipboardCheck />
-                  Verify Credential
-                </a>
-              </Button>
-            </div>
-          </SpotlightCard>
-        </div>
-      ))}
-    </div>
+      <div data-aos="fade-down" className="flex justify-center mb-10">
+        <ToggleButtonGroup
+          orientation="horizontal"
+          value={view}
+          exclusive
+          onChange={handleChange}
+        >
+          <ToggleButton
+            className="!text-white gap-3"
+            value="slideshow"
+            aria-label="slideshow"
+          >
+            <FaTv />
+            Slide Show
+          </ToggleButton>
+          <ToggleButton
+            className="!text-white gap-3"
+            value="gridview"
+            aria-label="gridview"
+          >
+            <FaBox />
+            Grid View
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </div>
+      {view === "slideshow" ? (
+        <SlideShow certificates={getCertificate} />
+      ) : (
+        <GridView certificates={getCertificate} />
+      )}
+    </>
   );
 }
 
-function SlideShow() {
+function SlideShow({ certificates }) {
   return (
     <div data-aos="fade-up">
       <Carousel
@@ -129,7 +118,13 @@ function SlideShow() {
                   <Card className="bg-transparent">
                     <CardContent className="flex flex-col md:flex-row items-center justify-center p-2 xl:p-6 gap-6 xl:gap-10">
                       <div className="w-full sm:w-1/2">
-                        <img src={item.img} alt={item.title} />
+                        {item.img ? (
+                          <img src={item.img} alt={item.title} />
+                        ) : (
+                          <div className="w-full h-[140px] bg-[var(--bg-primary)]">
+                            <FaMedal size={80} color="#fff" />
+                          </div>
+                        )}
                       </div>
 
                       <div className="w-full">
@@ -185,60 +180,71 @@ function SlideShow() {
   );
 }
 
-function Certificates() {
-  const [view, setView] = useState("gridview");
-
-  const handleChange = (event, nextView) => {
-    setView(nextView);
-  };
+function GridView({ certificates }) {
   return (
-    <>
-      <style>
-        {`
-          .MuiButtonBase-root {
-            border: 1px solid var(--bg-secondary) !important;
-          }
-          .Mui-selected {
-            background: var(--bg-secondary) !important;
-          }
-      `}
-      </style>
-      <h2 className="title">
-        <BlurText
-          text="LICENSES & CERTIFICATIONS"
-          delay={90}
-          animateBy="words"
-          direction="top"
-        />
-      </h2>
+    <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      {certificates.map((item, i) => (
+        <div key={i} data-aos="fade-up">
+          <SpotlightCard
+            className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
+            spotlightColor="rgba(0, 229, 255, 0.2)"
+          >
+            <div>
+              {item.img ? (
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className=" w-full h-[140xp]"
+                />
+              ) : (
+                <div className="w-full h-[140px] bg-[var(--bg-primary)]">
+                  <FaMedal size={80} />
+                </div>
+              )}
 
-      <div data-aos="fade-down" className="flex justify-center mb-10">
-        <ToggleButtonGroup
-          orientation="horizontal"
-          value={view}
-          exclusive
-          onChange={handleChange}
-        >
-          <ToggleButton
-            className="!text-white gap-3"
-            value="slideshow"
-            aria-label="slideshow"
-          >
-            <FaTv />
-            Slide Show
-          </ToggleButton>
-          <ToggleButton
-            className="!text-white gap-3"
-            value="gridview"
-            aria-label="gridview"
-          >
-            <FaBox />
-            Grid View
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
-      {view === "slideshow" ? <SlideShow /> : <GridView />}
-    </>
+              <p className="my-4 text-sm truncate uppercase font-semibold text-[var(--text-secondary)]">
+                {item.title}
+              </p>
+
+              <div className="mb-5">
+                <div className="flex justify-between gap-8">
+                  <span className="text-[10px] text-muted-foreground uppercase">
+                    Provider:
+                  </span>
+                  <p className="text-sm font-medium uppercase truncate max-w-48">
+                    {item.provider}
+                  </p>
+                </div>
+                <div className="flex justify-between gap-8">
+                  <span className="text-[10px] text-muted-foreground uppercase">
+                    Completed:
+                  </span>
+                  <p className="text-sm font-medium">{item.completed}</p>
+                </div>
+                <div className="flex justify-between gap-8">
+                  <span className="text-[10px] text-muted-foreground uppercase">
+                    credential id:
+                  </span>
+                  <p className="text-xs text-muted-foreground truncate max-w-[100px] xl:max-w-40">
+                    {item.cred_id}
+                  </p>
+                </div>
+              </div>
+              <Button
+                variant="secondary"
+                asChild
+                className="text-center w-full hover:bg-[var(--bg-secondary)] hover:text-white flex items-center gap-2 py-4 "
+              >
+                <a href={item.url} target="_blank" rel="noopener">
+                  <FaClipboardCheck />
+                  Verify Credential
+                </a>
+              </Button>
+            </div>
+          </SpotlightCard>
+        </div>
+      ))}
+    </div>
   );
 }
 
