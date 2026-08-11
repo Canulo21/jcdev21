@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 function Projects() {
   const [getProject, setGetProject] = useState([]);
   const [view, setView] = useState("wordpressview");
+  const [totalWPProj, setTotalWPProj] = useState(0);
+  const [totalFullStack, setTotalFullStack] = useState(0);
 
   const handleChange = (event, nextView) => {
     setView(nextView);
@@ -26,6 +28,9 @@ function Projects() {
     try {
       const data = await apiFetch("projects");
       console.log("here", data);
+
+      setTotalWPProj(data.length);
+      setTotalFullStack(data.length);
       setGetProject(data);
     } catch (err) {
       console.error("Failed to fetch certificates:", err);
@@ -39,32 +44,39 @@ function Projects() {
   function WordPressView() {
     return (
       <>
-        <div className="flex items-center justify-center gap-8 [&>*+*]:border-l [&>*+*]:pl-8">
+        <div
+          data-aos="fade-down"
+          className="flex items-center justify-center gap-4 md:gap-8 [&>*+*]:border-l md:[&>*+*]:pl-8 [&>*+*]:pl-4"
+        >
           <div>
-            <h3 className="!text-7xl">5+</h3>
-            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+            <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              5+
+            </h3>
+            <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
               Years Experience
             </p>
           </div>
 
           <div>
-            <h3 className="!text-7xl">13+</h3>
-            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+            <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              {totalWPProj}+
+            </h3>
+            <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
               Projects
             </p>
           </div>
         </div>
 
-        {/* Display  */}
+        {/* Display  Wordpress*/}
 
-        <div className="grid  mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid items-stretch mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {getProject.map((item, i) => (
             <div key={i} data-aos="fade-up">
               <SpotlightCard
-                className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
+                className="custom-spotlight-card h-full relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                 spotlightColor="rgba(0, 229, 255, 0.2)"
               >
-                <div>
+                <div className="flex flex-col h-full">
                   {item.image ? (
                     <img
                       src={item.image}
@@ -73,20 +85,20 @@ function Projects() {
                     />
                   ) : (
                     <div className="w-full h-[140px] bg-[var(--bg-primary)]">
-                      <FaMedal size={80} />
+                      <FaWordpress size={80} />
                     </div>
                   )}
 
-                  <div className="mb-5">
-                    <p className="my-4 text-xl truncate uppercase font-semibold text-center ">
-                      {item.title}
-                    </p>
+                  <p className="my-4 text-xl truncate uppercase font-semibold text-center ">
+                    {item.title}
+                  </p>
 
-                    <p className="my-4 text-sm truncate text-white/70 ">
-                      {item.description}
-                    </p>
+                  <p className="my-4 text-sm line-clamp-3 text-white/70 ">
+                    {item.description}
+                  </p>
 
-                    <div className="flex gap-1 my-6">
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-1 mt-2  mb-4">
                       {item.tags?.map((tag, i) => (
                         <span
                           key={i}
@@ -140,32 +152,39 @@ function Projects() {
   function FullStackView() {
     return (
       <>
-        <div className="flex items-center justify-center gap-8 [&>*+*]:border-l [&>*+*]:pl-8">
+        <div
+          data-aos="fade-down"
+          className="flex items-center justify-center gap-4 md:gap-8 [&>*+*]:border-l md:[&>*+*]:pl-8 [&>*+*]:pl-4"
+        >
           <div>
-            <h3 className="!text-7xl">2+</h3>
-            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+            <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              2+
+            </h3>
+            <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
               Years Experience
             </p>
           </div>
 
           <div>
-            <h3 className="!text-7xl">3+</h3>
-            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+            <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              {totalFullStack}+
+            </h3>
+            <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
               Projects
             </p>
           </div>
         </div>
 
-        {/* Display  Tester*/}
+        {/* Display  FullStack*/}
 
-        <div className="grid  mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid items-stretch mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {getProject.map((item, i) => (
             <div key={i} data-aos="fade-up">
               <SpotlightCard
-                className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
+                className="custom-spotlight-card h-full relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                 spotlightColor="rgba(0, 229, 255, 0.2)"
               >
-                <div>
+                <div className="flex flex-col h-full">
                   {item.image ? (
                     <img
                       src={item.image}
@@ -174,20 +193,20 @@ function Projects() {
                     />
                   ) : (
                     <div className="w-full h-[140px] bg-[var(--bg-primary)]">
-                      <FaMedal size={80} />
+                      <FaCode size={80} />
                     </div>
                   )}
 
-                  <div className="mb-5">
-                    <p className="my-4 text-xl truncate uppercase font-semibold text-center ">
-                      {item.title}
-                    </p>
+                  <p className="my-4 text-xl truncate uppercase font-semibold text-center ">
+                    {item.title}
+                  </p>
 
-                    <p className="my-4 text-sm truncate text-white/70 ">
-                      {item.description}
-                    </p>
+                  <p className="my-4 text-sm line-clamp-3 text-white/70 ">
+                    {item.description}
+                  </p>
 
-                    <div className="flex gap-1 my-6">
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-1 mt-2  mb-4">
                       {item.tags?.map((tag, i) => (
                         <span
                           key={i}
