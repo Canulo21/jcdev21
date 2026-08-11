@@ -39,11 +39,20 @@ function Projects() {
   function WordPressView() {
     return (
       <>
-        <div className="text-center">
-          <h3 className="!text-9xl ">5+</h3>
-          <p className="font-bold leading-0.5 tracking-widest text-[var(--text-secondary)]">
-            Years Exeprience
-          </p>
+        <div className="flex items-center justify-center gap-8 [&>*+*]:border-l [&>*+*]:pl-8">
+          <div>
+            <h3 className="!text-7xl">5+</h3>
+            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+              Years Experience
+            </p>
+          </div>
+
+          <div>
+            <h3 className="!text-7xl">13+</h3>
+            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+              Projects
+            </p>
+          </div>
         </div>
 
         {/* Display  */}
@@ -131,11 +140,20 @@ function Projects() {
   function FullStackView() {
     return (
       <>
-        <div className="text-center">
-          <h3 className="!text-9xl ">3+</h3>
-          <p className="font-bold leading-0.5 tracking-widest text-[var(--text-secondary)]">
-            Years Exeprience
-          </p>
+        <div className="flex items-center justify-center gap-8 [&>*+*]:border-l [&>*+*]:pl-8">
+          <div>
+            <h3 className="!text-7xl">2+</h3>
+            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+              Years Experience
+            </p>
+          </div>
+
+          <div>
+            <h3 className="!text-7xl">3+</h3>
+            <p className="font-bold leading-2 tracking-widest text-[var(--text-secondary)] text-center">
+              Projects
+            </p>
+          </div>
         </div>
 
         {/* Display  Tester*/}
