@@ -1,5 +1,4 @@
 import BlurText from "@/components/layouts/utils/BlurText";
-import cert1 from "../../assets/images/cert-1.png";
 import { Button } from "@/components/ui/button";
 import { FaBox, FaClipboardCheck, FaMedal, FaTv } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,7 +16,6 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useEffect, useState } from "react";
 import apiFetch from "@/lib/api";
-import { div } from "three/src/nodes/math/OperatorNode.js";
 
 function Certificates() {
   const [view, setView] = useState("gridview");
@@ -31,7 +29,6 @@ function Certificates() {
   const getCertificates = async () => {
     try {
       const data = await apiFetch("certifications");
-      console.log("here", data);
       setGetCertificate(data);
     } catch (err) {
       console.error("Failed to fetch certificates:", err);
