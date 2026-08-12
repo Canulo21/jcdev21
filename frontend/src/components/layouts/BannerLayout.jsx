@@ -68,7 +68,7 @@ function BannerLayout() {
           <img
             src={me}
             alt="Jhon Carlo Canulo"
-            className="relative z-[5]  w-[45%] brightness-85 saturate-80"
+            className="relative z-[5]  w-[60%] lg:w-[45%] brightness-85 saturate-80"
           />
         </div>
       </div>
