@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             ProjectTagSeeder::class,
             CategorySeeder::class,
-            ProjectCategorySeeder::class,
             CertificationSeeder::class,
             CompanySeeder::class,    
             CompanyExperienceSeeder::class,

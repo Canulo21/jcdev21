@@ -21,6 +21,7 @@ class ProjectSeeder extends Seeder
                 'image' => '',
                 'github_url' => '#',
                 'live_url' => 'https://praksish.dk/',
+                'category_id' => 1,
             ],
             [
                 'title' => 'Msvvs',
@@ -28,6 +29,7 @@ class ProjectSeeder extends Seeder
                 'image' => '',
                 'github_url' => '#',
                 'live_url' => 'https://msvvs.dk/',
+                'category_id' => 2,
             ],
         ];
         Project::insert($data_projects);
