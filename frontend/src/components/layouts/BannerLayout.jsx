@@ -7,7 +7,7 @@ import me from "../../assets/images/jc-hd.png";
 function BannerLayout() {
   return (
     <div>
-      <div className="relative  w-full h-full pt-[100px] lg:pt-0 lg:h-[90vh] overflow-hidden">
+      <div className="relative  w-full h-full pt-[60px] lg:pt-0 lg:h-[90vh] overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full z-[2]">
           <RippleGrid
             enableRainbow={false}
