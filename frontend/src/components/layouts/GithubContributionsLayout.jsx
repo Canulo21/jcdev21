@@ -18,7 +18,7 @@ export default function GithubContributionsLayout() {
     duration-500
     ease-in-out"
     >
-      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0 md:items-start justify-between mb-2 md:mb-8">
+      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0 md:items-start justify-between mb-8">
         <div className="flex gap-3 ">
           <FaGithub className="mt-1 text-2xl" />
 
@@ -62,19 +62,17 @@ export default function GithubContributionsLayout() {
         </div>
       </div>
 
-      <div className="w-full git-calendar overflow-x-auto ">
-        <GitHubCalendar
-          className="tester [&>footer]:flex-col [&>footer]:items-center sm:[&>footer]:flex-row sm:[&>footer]:items-start sm:[&>footer>div:last-child]:!ml-auto [&>footer>div:last-child]:!ml-0"
-          username="Canulo21"
-          year={year}
-          blockSize={16}
-          blockMargin={5}
-          fontSize={14}
-          theme={{
-            dark: ["#1a1a1a", "#7a1a00", "#b32400", "#e62e00", "#ff3300"],
-          }}
-        />
-      </div>
+      <GitHubCalendar
+        className="testers21 !w-full !gap-4 [&>footer]:flex-col [&>footer]:items-center sm:[&>footer]:flex-row sm:[&>footer]:items-start sm:[&>footer>div:last-child]:!ml-auto [&>footer>div:last-child]:!ml-0"
+        username="Canulo21"
+        year={year}
+        blockSize={20}
+        blockMargin={5}
+        fontSize={14}
+        theme={{
+          dark: ["#1a1a1a", "#7a1a00", "#b32400", "#e62e00", "#ff3300"],
+        }}
+      />
     </section>
   );
 }
