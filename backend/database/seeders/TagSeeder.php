@@ -43,7 +43,7 @@ class TagSeeder extends Seeder
             ],
             [
                 'id' => '6',
-                'name' => 'PhP'
+                'name' => 'PHP'
                 
             ],
             [
@@ -53,7 +53,7 @@ class TagSeeder extends Seeder
             ],
             [
                 'id' => '8',
-                'name' => 'Css'
+                'name' => 'CSS'
                 
             ],
         ];
