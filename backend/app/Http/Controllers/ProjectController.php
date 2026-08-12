@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    //tester
+    //testers
     public function index()
     {
         $projects = Project::with(['tags', 'category'])->get();
