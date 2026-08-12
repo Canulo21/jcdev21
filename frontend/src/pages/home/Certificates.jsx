@@ -202,7 +202,7 @@ function GridView({ certificates }) {
                 </div>
               )}
 
-              <p className="my-4 text-sm truncate uppercase font-semibold text-[var(--text-secondary)]">
+              <p className="my-4 text-sm truncate uppercase font-semibold text-center text-[var(--text-secondary)]">
                 {item.title}
               </p>
 
