@@ -3,6 +3,8 @@ import RippleGrid from "./utils/RippleGrid";
 import TextType from "./utils/TextType";
 import WarpText from "./utils/WarpText";
 import me from "../../assets/images/jc-hd.png";
+import { Button } from "../ui/button";
+import { FaFileDownload, FaPaperclip, FaRegNewspaper } from "react-icons/fa";
 
 function BannerLayout() {
   return (
@@ -25,14 +27,12 @@ function BannerLayout() {
           />
         </div>
 
-        <div className="  m-auto  w-[95%] 2xl:w-[1395px] h-full flex-col lg:flex-row flex items-center justify-center gap-5 xl:gap-20 text-center text-white overflow-hidden">
-          <div className="relative lg:top-[-150px]">
-            <p className="text-3xl sm:text-4xl font-bold relative z-[5]">
-              Hi, I'm
-            </p>
+        <div className="  m-auto w-[95%] 2xl:w-[1395px] h-full flex-col lg:flex-row flex items-center justify-center gap-5 xl:gap-20 text-center lg:text-left text-white overflow-hidden">
+          <div className="relative z-[5] lg:top-[-150px]">
+            <p className="text-3xl sm:text-4xl font-bold ">Hi, I'm</p>
             <WarpText
-              className=" relative z-[5] !min-h-[95px] sm:!min-h-[130px]"
-              text="Jhon Carlo"
+              className="  !min-h-[95px]  sm:!min-h-[130px]"
+              text="Jhon Carlo < / >"
               warpIntensity={0.1}
               fontFamily="inherit"
               fontSize={100}
@@ -40,7 +40,7 @@ function BannerLayout() {
             />
 
             <TextType
-              className="text-xl md:text-2xl text-[var(--font-primary)] font-semibold text-[var(--text-secondary)] relative z-[5] "
+              className="text-xl md:text-2xl text-[var(--font-primary)] font-semibold text-[var(--text-secondary)]  "
               text={[
                 "Front-End Developer",
                 "React Enthusiast",
@@ -57,12 +57,23 @@ function BannerLayout() {
               cursorBlinkDuration={0.5}
             />
 
-            <p className="text-sm md:text-lg text-muted-foreground  mt-6 relative z-[5]">
+            <p className="text-sm md:text-lg text-muted-foreground  mt-6 ">
               As a passionate self-taught front-end developer, I'm driven by
               curiosity and a love for crafting intuitive, responsive web
               experiences. My journey is fueled by continuous learning and a
               deep commitment to mastering the art of web design.
             </p>
+
+            <div className="flex justify-center lg:justify-start">
+              <Button
+                asChild
+                className="mt-6 border-2  text-md py-6 px-6 border-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)] flex item-center gap-2 w-fit"
+              >
+                <a href="#">
+                  Donwload CV <FaFileDownload />
+                </a>
+              </Button>
+            </div>
           </div>
 
           <img
