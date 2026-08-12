@@ -38,7 +38,7 @@ function Contact() {
           direction="top"
         />
       </h2>
-      <div className="flex flex-col lg:flex-row justify-between items-end ove">
+      <div className="flex flex-col lg:flex-row justify-between items-end overflow-hidden">
         <div
           data-aos="fade-right"
           className="flex flex-col gap-6 w-full lg:w-[60%] pb-[40px] lg:pb-[100px]"
