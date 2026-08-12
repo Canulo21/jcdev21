@@ -38,8 +38,11 @@ function Contact() {
           direction="top"
         />
       </h2>
-      <div className="flex flex-col lg:flex-row justify-between items-end">
-        <div className="flex flex-col gap-6 w-full lg:w-[60%] pb-[40px] lg:pb-[100px]">
+      <div className="flex flex-col lg:flex-row justify-between items-end ove">
+        <div
+          data-aos="fade-right"
+          className="flex flex-col gap-6 w-full lg:w-[60%] pb-[40px] lg:pb-[100px]"
+        >
           {contacts.map((item, i) => (
             <a
               href={
@@ -70,7 +73,10 @@ function Contact() {
             </a>
           ))}
         </div>
-        <div className="w-full flex justify-center lg:justify-end lg:w-[35%]">
+        <div
+          data-aos="fade-left"
+          className="w-full flex justify-center lg:justify-end lg:w-[35%]"
+        >
           <img
             className="brightness-85 saturate-80 w-[50%] sm:w-[35%] lg:w-full"
             src={me}
