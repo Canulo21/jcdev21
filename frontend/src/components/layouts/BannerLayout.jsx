@@ -57,7 +57,7 @@ function BannerLayout() {
               cursorBlinkDuration={0.5}
             />
 
-            <p className="text-sm md:text-lg text-muted-foreground mx-[40px] xl:mx-0  lg:max-w-[1100px] mt-6 relative z-[5]">
+            <p className="text-sm md:text-lg text-muted-foreground  mt-6 relative z-[5]">
               As a passionate self-taught front-end developer, I'm driven by
               curiosity and a love for crafting intuitive, responsive web
               experiences. My journey is fueled by continuous learning and a
