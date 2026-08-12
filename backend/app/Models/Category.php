@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     //
-    public function projects()
+    public function project()
     {
-        return $this->hasMany(Project::class, 'project_categories');
+        return $this->hasMany(Project::class);
     }
 }

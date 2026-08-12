@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['title', 'description', 'image', 'github_url', 'live_url'])]
+#[Fillable(['title', 'description', 'image', 'github_url', 'live_url', 'category_id'])]
 class Project extends Model
 {
     //
@@ -14,8 +14,8 @@ class Project extends Model
         return $this->belongsToMany(Tag::class, 'project_tags');
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'project_categories');
+        return $this->belongsTo(Category::class);
     }
 }

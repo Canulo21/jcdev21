@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('github_url')->nullable();
             $table->string('live_url')->nullable();
+
+            $table->foreignId('category_id')
+            ->constrained('categories')
+            ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
