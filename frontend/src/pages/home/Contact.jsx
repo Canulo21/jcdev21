@@ -78,7 +78,7 @@ function Contact() {
           className="w-full flex justify-center lg:justify-end lg:w-[35%]"
         >
           <img
-            className="brightness-85 saturate-80 w-[50%] sm:w-[35%] lg:w-full"
+            className="brightness-85 saturate-80  w-[65%] sm:w-[35%] lg:w-full"
             src={me}
             alt="Jhon Carlo"
           />
