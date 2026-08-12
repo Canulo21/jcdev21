@@ -3,14 +3,7 @@ import BlurText from "../../components/layouts/utils/BlurText";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import apiFetch from "@/lib/api";
-import {
-  FaBox,
-  FaCode,
-  FaLink,
-  FaMedal,
-  FaTv,
-  FaWordpress,
-} from "react-icons/fa";
+import { FaCode, FaLink, FaWordpress } from "react-icons/fa";
 import SpotlightCard from "@/components/layouts/utils/SpotlightCard";
 import { Button } from "@/components/ui/button";
 
@@ -84,7 +77,7 @@ function Projects() {
                       className=" w-full h-[140xp]"
                     />
                   ) : (
-                    <div className="w-full h-[140px] bg-[var(--bg-primary)]">
+                    <div className="w-full h-[140px] bg-[var(--bg-primary)] ">
                       <FaWordpress size={80} />
                     </div>
                   )}
