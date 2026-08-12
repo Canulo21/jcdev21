@@ -67,7 +67,7 @@ function Projects() {
           </div>
         </div>
 
-        {/* Display  Wordpress*/}
+        {/* Display  Wordpress tester main*/}
 
         <div className="grid items-stretch mt-18 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {getProject.map((item, i) => (
