@@ -2,6 +2,7 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import Skills from "./Skills";
 import Certificates from "./Certificates";
+import Contact from "./Contact";
 
 function Home() {
   return (
@@ -20,6 +21,10 @@ function Home() {
 
       <section id="certifications" className="wrap-1395">
         <Certificates />
+      </section>
+
+      <section id="contact" className="wrap-1395 !pb-0">
+        <Contact />
       </section>
     </>
   );
