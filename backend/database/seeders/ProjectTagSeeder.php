@@ -39,6 +39,14 @@ class ProjectTagSeeder extends Seeder
                 'project_id' => '2',
                 'tag_id' => '8'
             ],
+            [
+                'project_id' => '3',
+                'tag_id' => '9'
+            ],
+            [
+                'project_id' => '4',
+                'tag_id' => '8'
+            ],
             
         ];
         ProjectTag::insert($data_tags);

@@ -31,6 +31,14 @@ class ProjectSeeder extends Seeder
                 'live_url' => 'https://msvvs.dk/',
                 'category_id' => 2,
             ],
+            [
+                'title' => 'Positivus',
+                'description' => 'This is only a practice website where i transform a figma design to functional website.',
+                'image' => '',
+                'github_url' => 'https://github.com/Canulo21/positivus',
+                'live_url' => 'https://positivus-jc.vercel.app/',
+                'category_id' => 3,
+            ],
         ];
         Project::insert($data_projects);
     }

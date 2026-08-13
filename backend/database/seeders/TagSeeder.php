@@ -56,6 +56,11 @@ class TagSeeder extends Seeder
                 'name' => 'CSS'
                 
             ],
+            [
+                'id' => '9',
+                'name' => 'React'
+                
+            ],
         ];
         Tag::insert($data_tags);
     }

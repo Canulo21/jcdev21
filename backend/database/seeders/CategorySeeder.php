@@ -26,6 +26,11 @@ class CategorySeeder extends Seeder
                 'name' => 'WordPress'
                 
             ],
+            [
+                'id' => '3',
+                'name' => 'Frontend'
+                
+            ],
         ];
         Category::insert($data_categories);
     }
