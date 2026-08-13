@@ -44,7 +44,7 @@ class ProjectTagSeeder extends Seeder
                 'tag_id' => '9'
             ],
             [
-                'project_id' => '4',
+                'project_id' => '3',
                 'tag_id' => '8'
             ],
             
