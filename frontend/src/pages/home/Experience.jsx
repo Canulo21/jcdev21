@@ -11,6 +11,7 @@ import BlurText from "@/components/layouts/utils/BlurText";
 import SpotlightCard from "@/components/layouts/utils/SpotlightCard";
 import { useEffect, useState } from "react";
 import apiFetch from "@/lib/api";
+import { FaGlobe } from "react-icons/fa";
 
 export default function Experience() {
   const [getCompany, setGetCompany] = useState([]);
@@ -19,6 +20,7 @@ export default function Experience() {
   const getCompanies = async () => {
     try {
       const data = await apiFetch("companies");
+      console.log(data);
       setGetCompany(data);
     } catch (err) {
       console.error("Failed to fetch companies:", err);
@@ -57,6 +59,10 @@ export default function Experience() {
             className="
     !px-0 sm:!px-4
     [&>li]:!flex-col
+    
+    [&>li_.holder-link]:justify-center
+    sm:[&>li:nth-child(odd)_.holder-link]:justify-end
+    sm:[&>li:nth-child(even)_.holder-link]:justify-start
     sm:[&>li:nth-child(odd)]:!flex-row
     sm:[&>li:nth-child(even)]:!flex-row-reverse
     [&>li>div]:!text-center
@@ -76,12 +82,23 @@ export default function Experience() {
                   }}
                 >
                   {company.company_name}
-                  <Typography
-                    variant="body2"
-                    className="text-muted-foreground !font-medium !text-xs !mt-2"
-                  >
+                  <Typography className="text-muted-foreground !font-medium !text-xs !mt-2">
                     {company.company_addresse}
                   </Typography>
+                  {company.company_website ? (
+                    <Typography className="text-muted-foreground !font-medium !text-xs !mt-2">
+                      <div className="holder-link flex">
+                        <a
+                          href={company.company_website}
+                          target="_blank"
+                          rel="noopener"
+                          className="flex items-center gap-2  w-fit hover:text-[var(--text-secondary)]"
+                        >
+                          <FaGlobe /> Website
+                        </a>
+                      </div>
+                    </Typography>
+                  ) : null}
                 </TimelineOppositeContent>
                 <TimelineSeparator
                   data-aos="fade-up"

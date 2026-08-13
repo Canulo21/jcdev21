@@ -23,7 +23,6 @@ function Projects() {
   const getProjects = async () => {
     try {
       const data = await apiFetch("projects");
-      console.log("here", data);
 
       const filterWp = data.filter((wp) => wp.category.name === "WordPress");
       const filterFullStack = data.filter(
@@ -114,7 +113,10 @@ function Projects() {
           </div>
         </div>
 
-        <p className="mt-20 text-center tracking-wide">
+        <p
+          data-aos="fade-up"
+          className="mt-8 lg:mt-14 text-center tracking-wide"
+        >
           Most of the projects I’ve worked on are from the company, so I’ve only
           featured a few selected projects in my portfolio.
           <span className="text-[var(--text-secondary)] text-lg font-bold">

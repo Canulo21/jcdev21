@@ -5,7 +5,7 @@ import MainLayout from "./components/layouts/MainLayout";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Home from "./pages/home/Home";
-import Skills from "./pages/home/Skills";
+import NotFoundPageLayout from "./components/layouts/NotFoundPageLayout";
 
 function App() {
   useEffect(() => {
@@ -19,8 +19,10 @@ function App() {
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/skills" element={<Skills />} />
       </Route>
+
+      {/* 404 */}
+      <Route path="*" element={<NotFoundPageLayout />} />
     </Routes>
   );
 }

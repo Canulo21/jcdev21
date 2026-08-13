@@ -55,10 +55,10 @@ function FooterLayout() {
   return (
     <section className="!p-0 wrap-1395">
       <SpotlightCard
-        className=" custom-spotlight-card pt-8 md:pt-15 pb-4 md:pb-5 px-3 xs:px-6 md:px-10"
+        className=" custom-spotlight-card pt-6 sm:pt-8 md:pt-15 pb-2 sm:pb-4 md:pb-5 px-3 xs:px-6 md:px-10"
         spotlightColor="rgba(0, 229, 255, 0.1)"
       >
-        <nav className="flex justify-center md:justify-start gap-2 sm:gap-3 sm:gap-6 text-lg font-medium pb-6 md:pb-10">
+        <nav className="flex justify-center md:justify-start gap-2 sm:gap-3 sm:gap-6 text-lg font-medium pb-3 sm:pb-6 md:pb-10">
           {links.map((link) => (
             <button
               key={link.id}
@@ -76,7 +76,7 @@ function FooterLayout() {
         </nav>
 
         <div>
-          <p className="text-muted-foreground text-center md:text-left text-sm font-bold pt-5 border-t border-t-white/30">
+          <p className="text-muted-foreground text-center md:text-left text-xs sm:text-sm font-bold pt-3 sm:pt-5 border-t border-t-white/30">
             © 2026 Jhon Carlo Canulo · jcdev21.vercel.app
           </p>
         </div>

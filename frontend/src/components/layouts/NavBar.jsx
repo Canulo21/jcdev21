@@ -62,30 +62,32 @@ function NavBar() {
 
   return (
     <>
-      <header className="h-[80px] xl:h-28 sticky top-0 z-50 flex items-center justify-between px-5 2xl:px-24 bg-[var(--bg-primary)]">
-        <a href="/" className="text-white text-3xl md:text-5xl font-bold ">
-          JC <span className="text-[var(--text-secondary)]">Dev.</span>
-        </a>
+      <header className="h-[80px] xl:h-28 sticky top-0 z-50  bg-[var(--bg-primary)]">
+        <div className="h-full flex items-center justify-between wrap-1395 !px-0">
+          <a href="/" className="text-white text-3xl md:text-5xl font-bold ">
+            JC <span className="text-[var(--text-secondary)]">Dev.</span>
+          </a>
 
-        <nav className="hidden lg:flex gap-6 text-lg font-medium">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              type="button"
-              onClick={() => scrollToSection(link.id)}
-              className={
-                activeSection === link.id
-                  ? "text-[var(--text-secondary)]"
-                  : "hover:text-[var(--text-secondary)]"
-              }
-            >
-              {link.label}
-            </button>
-          ))}
-        </nav>
+          <nav className="hidden lg:flex gap-6 text-lg font-medium">
+            {links.map((link) => (
+              <button
+                key={link.id}
+                type="button"
+                onClick={() => scrollToSection(link.id)}
+                className={
+                  activeSection === link.id
+                    ? "text-[var(--text-secondary)]"
+                    : "hover:text-[var(--text-secondary)]"
+                }
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
 
-        <div className="show lg:hidden">
-          <HamburgerMenu />
+          <div className="show lg:hidden">
+            <HamburgerMenu />
+          </div>
         </div>
       </header>
     </>
