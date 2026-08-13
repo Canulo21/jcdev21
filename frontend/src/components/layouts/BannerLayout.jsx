@@ -42,7 +42,7 @@ function BannerLayout() {
             <TextType
               className="text-xl md:text-2xl text-[var(--font-primary)] font-semibold text-[var(--text-secondary)]  "
               text={[
-                "Front-End Developer",
+                "Frontend Developer",
                 "React Enthusiast",
                 "WordPress Web Developer",
               ]}
