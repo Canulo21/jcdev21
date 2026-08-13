@@ -11,9 +11,11 @@ import BlurText from "@/components/layouts/utils/BlurText";
 import SpotlightCard from "@/components/layouts/utils/SpotlightCard";
 import { useEffect, useState } from "react";
 import apiFetch from "@/lib/api";
+import { div } from "three/src/nodes/math/OperatorNode.js";
 
 export default function Experience() {
   const [getCompany, setGetCompany] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getCompanies = async () => {
     try {
@@ -21,6 +23,8 @@ export default function Experience() {
       setGetCompany(data);
     } catch (err) {
       console.error("Failed to fetch companies:", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -39,10 +43,19 @@ export default function Experience() {
         />
       </h2>
 
-      <div className="overflow-hidden">
-        <Timeline
-          position="alternate"
-          className="
+      {isLoading ? (
+        <div
+          data-aos="fade-up"
+          className="flex items-center flex-col justify-center"
+        >
+          <span className="loader-cup "></span>
+          <span className="loader-text">Load ng</span>
+        </div>
+      ) : (
+        <div className="overflow-hidden">
+          <Timeline
+            position="alternate"
+            className="
     !px-0 sm:!px-4
     [&>li]:!flex-col
     sm:[&>li:nth-child(odd)]:!flex-row
@@ -51,74 +64,75 @@ export default function Experience() {
     sm:[&>li:nth-child(odd)>div]:!text-right
     sm:[&>li:nth-child(even)>div]:!text-left
   "
-        >
-          {getCompany.map((company, index) => (
-            <TimelineItem key={index} className=" mt-5 sm:mt-0">
-              <TimelineOppositeContent
-                data-aos="fade-right"
-                align="right"
-                variant="h4"
-                className="!text-2xl lg:!text-4xl text-[var(--text-secondary)] !px-0 sm:!px-4 !font-semibold "
-                sx={{
-                  m: "auto 0",
-                }}
-              >
-                {company.company_name}
-                <Typography
-                  variant="body2"
-                  className="text-muted-foreground !font-medium !text-xs !mt-2"
+          >
+            {getCompany.map((company, index) => (
+              <TimelineItem key={index} className=" mt-5 sm:mt-0">
+                <TimelineOppositeContent
+                  data-aos="fade-right"
+                  align="right"
+                  variant="h4"
+                  className="!text-2xl lg:!text-4xl text-[var(--text-secondary)] !px-0 sm:!px-4 !font-semibold "
+                  sx={{
+                    m: "auto 0",
+                  }}
                 >
-                  {company.company_addresse}
-                </Typography>
-              </TimelineOppositeContent>
-              <TimelineSeparator
-                data-aos="fade-up"
-                className=" w-fit sm:w-auto mx-auto"
-              >
-                <TimelineConnector />
-                <TimelineDot className="!bg-[var(--bg-secondary)] ">
-                  <LaptopMacIcon />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent
-                sx={{ py: "12px", px: 2 }}
-                data-aos="fade-left"
-                className="!px-0 sm:!px-4"
-              >
-                <SpotlightCard
-                  className="custom-spotlight-card "
-                  spotlightColor="rgba(0, 229, 255, 0.2)"
+                  {company.company_name}
+                  <Typography
+                    variant="body2"
+                    className="text-muted-foreground !font-medium !text-xs !mt-2"
+                  >
+                    {company.company_addresse}
+                  </Typography>
+                </TimelineOppositeContent>
+                <TimelineSeparator
+                  data-aos="fade-up"
+                  className=" w-fit sm:w-auto mx-auto"
                 >
-                  {company.experiences.map((role, i) => (
-                    <div key={i} className="mb-4 text-left">
-                      <Typography variant="h6" component="span">
-                        {role.position}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        className="text-muted-foreground !font-medium !text-xs"
-                      >
-                        {role.duration}
-                      </Typography>
-                      <ul className="mt-5 list-disc">
-                        {role.description.split("\n").map((item, index) => (
-                          <li
-                            className="text-sm mt-4 text-white/70"
-                            key={index}
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </SpotlightCard>
-              </TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline>
-      </div>
+                  <TimelineConnector />
+                  <TimelineDot className="!bg-[var(--bg-secondary)] ">
+                    <LaptopMacIcon />
+                  </TimelineDot>
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent
+                  sx={{ py: "12px", px: 2 }}
+                  data-aos="fade-left"
+                  className="!px-0 sm:!px-4"
+                >
+                  <SpotlightCard
+                    className="custom-spotlight-card "
+                    spotlightColor="rgba(0, 229, 255, 0.2)"
+                  >
+                    {company.experiences.map((role, i) => (
+                      <div key={i} className="mb-4 text-left">
+                        <Typography variant="h6" component="span">
+                          {role.position}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          className="text-muted-foreground !font-medium !text-xs"
+                        >
+                          {role.duration}
+                        </Typography>
+                        <ul className="mt-5 list-disc">
+                          {role.description.split("\n").map((item, index) => (
+                            <li
+                              className="text-sm mt-4 text-white/70"
+                              key={index}
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </SpotlightCard>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </div>
+      )}
     </>
   );
 }
