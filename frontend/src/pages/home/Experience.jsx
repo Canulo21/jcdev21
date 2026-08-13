@@ -11,7 +11,6 @@ import BlurText from "@/components/layouts/utils/BlurText";
 import SpotlightCard from "@/components/layouts/utils/SpotlightCard";
 import { useEffect, useState } from "react";
 import apiFetch from "@/lib/api";
-import { div } from "three/src/nodes/math/OperatorNode.js";
 
 export default function Experience() {
   const [getCompany, setGetCompany] = useState([]);

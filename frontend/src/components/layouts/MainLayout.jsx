@@ -9,11 +9,13 @@ import GithubContributionsLayout from "./GithubContributionsLayout";
 import { Button } from "../ui/button";
 import { FaArrowUp } from "react-icons/fa";
 import FooterLayout from "./FooterLayout";
+import ScrollProgress from "./ScrollPogress";
 
 function MainLayout() {
   return (
     <>
       <div>
+        <ScrollProgress />
         <NavBar />
         <BannerLayout />
         <GithubContributionsLayout />
