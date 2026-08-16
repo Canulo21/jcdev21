@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        //seed
         $data_categories = [
             [
                 'id' => '1',
