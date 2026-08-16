@@ -139,7 +139,7 @@ function Projects() {
               {getProject
                 .filter((item) => item.category.name === "WordPress")
                 .map((item, i) => (
-                  <div key={i} data-aos="fade-up">
+                  <div key={i}>
                     <SpotlightCard
                       className="custom-spotlight-card h-full relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                       spotlightColor="rgba(0, 229, 255, 0.2)"
@@ -259,7 +259,7 @@ function Projects() {
               {getProject
                 .filter((item) => item.category.name === "Full Stack")
                 .map((item, i) => (
-                  <div key={i} data-aos="fade-up">
+                  <div key={i}>
                     <SpotlightCard
                       className="custom-spotlight-card h-full relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                       spotlightColor="rgba(0, 229, 255, 0.2)"
@@ -379,7 +379,7 @@ function Projects() {
               {getProject
                 .filter((item) => item.category.name === "Frontend")
                 .map((item, i) => (
-                  <div key={i} data-aos="fade-up">
+                  <div key={i}>
                     <SpotlightCard
                       className="custom-spotlight-card h-full relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                       spotlightColor="rgba(0, 229, 255, 0.2)"

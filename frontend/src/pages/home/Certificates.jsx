@@ -88,7 +88,7 @@ function Certificates() {
 
   function SkeletonLoadingSlideShow() {
     return (
-      <div className="p-1">
+      <div className="p-1" data-aos="fade-up">
         <SpotlightCard
           className="custom-spotlight-card relative  top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-1"
           spotlightColor="rgba(0, 229, 255, 0.2)"
@@ -130,7 +130,7 @@ function Certificates() {
 
   function SlideShow({ certificates }) {
     return (
-      <div data-aos="fade-up">
+      <div>
         {isLoading ? (
           <SkeletonLoadingSlideShow />
         ) : (
@@ -230,7 +230,7 @@ function Certificates() {
         ) : (
           <>
             {certificates.map((item, i) => (
-              <div key={i} data-aos="fade-up">
+              <div key={i}>
                 <SpotlightCard
                   className="custom-spotlight-card relative top-0 hover:-top-2 transition-all duration-300 ease-in-out !p-4"
                   spotlightColor="rgba(0, 229, 255, 0.2)"
