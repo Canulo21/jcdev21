@@ -13,7 +13,7 @@ class ProjectTagSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        //seed
         $data_tags = [
             [
                 'project_id' => '1',
