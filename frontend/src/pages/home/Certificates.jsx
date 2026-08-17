@@ -197,11 +197,7 @@ function Certificates() {
                               asChild
                               className="text-center text-md xl:text-lg mt-5 py-4 xl:py-6 w-full hover:bg-[var(--bg-secondary)] hover:text-white"
                             >
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener"
-                              >
+                              <a href={item.url} target="_blank" rel="noopener">
                                 <FaClipboardCheck />
                                 Verify Credential
                               </a>
