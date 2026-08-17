@@ -6,6 +6,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Home from "./pages/home/Home";
 import NotFoundPageLayout from "./components/layouts/NotFoundPageLayout";
+import Login from "./admin/Login";
+import DashboardIndex from "./admin/dashboard/DashboardIndex";
+import AdminDashboardLayout from "./components/layouts/AdminDashboardLayout";
+import ProjectIndex from "./admin/dashboard/ProjectIndex";
+import CertificateIndex from "./admin/dashboard/CertificateIndex";
 
 function App() {
   useEffect(() => {
@@ -19,6 +24,16 @@ function App() {
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
+      </Route>
+
+      {/* Login */}
+      <Route path="/jc-login" element={<Login />} />
+
+      {/* Dashboard */}
+      <Route element={<AdminDashboardLayout />}>
+        <Route path="/dashboard" element={<DashboardIndex />} />
+        <Route path="/projects" element={<ProjectIndex />} />
+        <Route path="/certificates" element={<CertificateIndex />} />
       </Route>
 
       {/* 404 */}

@@ -20,7 +20,7 @@ export default function Experience() {
   const getCompanies = async () => {
     try {
       const data = await apiFetch("companies");
-      console.log(data);
+
       setGetCompany(data);
     } catch (err) {
       console.error("Failed to fetch companies:", err);

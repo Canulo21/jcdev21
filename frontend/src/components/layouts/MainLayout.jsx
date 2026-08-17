@@ -14,7 +14,7 @@ import ScrollProgress from "./ScrollPogress";
 function MainLayout() {
   return (
     <>
-      <div>
+      <div className="relative bg-[var(--bg-primary)] text-white">
         <ScrollProgress />
         <NavBar />
         <BannerLayout />

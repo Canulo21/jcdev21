@@ -163,8 +163,8 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-white);
+  /* background-color: var(--bg-primary);
+  color: var(--text-white); */
   font-family: var(--font-secondary);
   margin: 0;
   padding: 0;
