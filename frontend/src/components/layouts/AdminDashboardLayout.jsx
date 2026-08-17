@@ -7,7 +7,7 @@ export default function AdminDashboardLayout() {
     <SidebarProvider>
       <AppSidebar />
 
-      <main>
+      <main className="w-full">
         <SidebarTrigger />
         <div className="p-6">
           <Outlet />
