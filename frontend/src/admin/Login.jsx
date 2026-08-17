@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 
 function Login() {
   return (
-    <div className="h-dvh w-full flex items-center justify-center">
+    <div className="h-dvh w-full flex items-center justify-center bg-[var(--bg-primary)]">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">
