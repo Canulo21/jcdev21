@@ -12,6 +12,7 @@ import ProjectIndex from "./admin/dashboard/ProjectIndex";
 import CertificateIndex from "./admin/dashboard/CertificateIndex";
 import ExperienceIndex from "./admin/dashboard/ExperienceIndex";
 import GuestRoute from "./components/GuestRoute";
+import TechStackIndex from "./admin/dashboard/TechStackIndex";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
         <Route element={<AdminDashboardLayout />}>
           <Route path="/dashboard" element={<DashboardIndex />} />
           <Route path="/projects" element={<ProjectIndex />} />
+          <Route path="/tech-stack" element={<TechStackIndex />} />
           <Route path="/experiences" element={<ExperienceIndex />} />
           <Route path="/certificates" element={<CertificateIndex />} />
         </Route>

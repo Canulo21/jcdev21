@@ -17,8 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import apiFetch from "@/lib/api";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-import Button from "@mui/material/Button";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 function ProjectIndex() {
   const [getProject, setGetProject] = useState([]);
@@ -44,7 +44,7 @@ function ProjectIndex() {
       getProjects();
     } catch (err) {
       console.error("Failed to delete project:", err);
-      toast.error("Failed to delete project.");
+      toast.error("Failed to delete project.", err);
     }
   };
 
@@ -91,13 +91,17 @@ function ProjectIndex() {
                   <DropdownMenuContent>
                     <DropdownMenuGroup>
                       <DropdownMenuItem>
-                        <Button className="flex gap-2 items-center">
+                        <Button
+                          variant="outline"
+                          className="flex gap-2 items-center w-full"
+                        >
                           <FaPencilAlt /> Edit
                         </Button>
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Button
-                          className="flex gap-2 items-center"
+                          variant="destructive"
+                          className="flex gap-2 items-center w-full"
                           onClick={() => handleDelete(item.id)}
                         >
                           <FaTrashAlt /> Remove

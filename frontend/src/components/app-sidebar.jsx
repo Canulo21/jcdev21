@@ -11,6 +11,13 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import apiFetch from "@/lib/api";
+import {
+  FaCode,
+  FaHome,
+  FaLaptop,
+  FaNewspaper,
+  FaProjectDiagram,
+} from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -18,18 +25,27 @@ const menus = [
   {
     title: "dashboard",
     url: "/dashboard",
+    icon: <FaHome />,
   },
   {
     title: "projects",
     url: "/projects",
+    icon: <FaProjectDiagram />,
+  },
+  {
+    title: "tech stack",
+    url: "/tech-stack",
+    icon: <FaCode />,
   },
   {
     title: "experiences",
     url: "/experiences",
+    icon: <FaLaptop />,
   },
   {
     title: "certificates",
     url: "/certificates",
+    icon: <FaNewspaper />,
   },
 ];
 
@@ -69,13 +85,14 @@ export function AppSidebar() {
                   <NavLink
                     to={item.url}
                     className={({ isActive }) =>
-                      `w-full block uppercase font-medium py-3 px-4 hover:opacity-95 mb-2 ${
+                      `w-full block uppercase font-medium flex gap-4 items-center py-3 px-4 hover:opacity-95 mb-2 ${
                         isActive
                           ? "!bg-[var(--bg-secondary)] text-white"
                           : "!bg-[var(--bg-primary)] text-white"
                       }`
                     }
                   >
+                    {item.icon}
                     {item.title}
                   </NavLink>
                 </SidebarMenuItem>
