@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import AOS from "aos";
@@ -21,24 +20,26 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-      </Route>
+    <>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
 
-      {/* Login */}
-      <Route path="/jc-login" element={<Login />} />
+        {/* Login */}
+        <Route path="/jc-login" element={<Login />} />
 
-      {/* Dashboard */}
-      <Route element={<AdminDashboardLayout />}>
-        <Route path="/dashboard" element={<DashboardIndex />} />
-        <Route path="/projects" element={<ProjectIndex />} />
-        <Route path="/certificates" element={<CertificateIndex />} />
-      </Route>
+        {/* Dashboard */}
+        <Route element={<AdminDashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardIndex />} />
+          <Route path="/projects" element={<ProjectIndex />} />
+          <Route path="/certificates" element={<CertificateIndex />} />
+        </Route>
 
-      {/* 404 */}
-      <Route path="*" element={<NotFoundPageLayout />} />
-    </Routes>
+        {/* 404 */}
+        <Route path="*" element={<NotFoundPageLayout />} />
+      </Routes>
+    </>
   );
 }
 

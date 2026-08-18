@@ -1,8 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { AppSidebar } from "../app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "../ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AdminDashboardLayout() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/jc-login" replace />;
+  }
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -13,6 +19,7 @@ export default function AdminDashboardLayout() {
           <Outlet />
         </div>
       </main>
+      <Toaster />
     </SidebarProvider>
   );
 }

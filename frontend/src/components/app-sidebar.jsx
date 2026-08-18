@@ -10,8 +10,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link, NavLink } from "react-router-dom";
-import { div } from "three/src/nodes/math/OperatorNode.js";
+import apiFetch from "@/lib/api";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const menus = [
   {
@@ -29,6 +30,23 @@ const menus = [
 ];
 
 export function AppSidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await apiFetch("logout", {
+        method: "POST",
+      });
+
+      toast.success("Logged out successfully.");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Logout failed.");
+    } finally {
+      localStorage.removeItem("token");
+      navigate("/jc-login", { replace: true });
+    }
+  };
   return (
     <Sidebar>
       <SidebarContent className="border-t-4 border-[var(--bg-secondary)]">
@@ -62,6 +80,16 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      {/* LOGOUT */}
+      <SidebarFooter>
+        <button
+          onClick={handleLogout}
+          className="w-full uppercase font-medium py-3 px-4 text-white bg-[var(--bg-primary)] hover:bg-[var(--bg-secondary)] transition-colors"
+        >
+          Logout
+        </button>
+      </SidebarFooter>
     </Sidebar>
   );
 }
