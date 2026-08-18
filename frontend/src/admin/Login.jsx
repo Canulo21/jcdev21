@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Toaster } from "@/components/ui/sonner";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -86,9 +87,14 @@ function Login() {
 
               {error && <p className="text-sm text-red-500">{error}</p>}
 
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Logging in..." : "Login"}
-              </Button>
+              <div className="flex gap-2">
+                <Button type="submit" className="flex-1" disabled={isLoading}>
+                  {isLoading ? "Logging in..." : "Login"}
+                </Button>
+                <Button variant="outline" className="flex-1">
+                  <Link to="/">Home Page</Link>
+                </Button>
+              </div>
             </div>
           </form>
         </CardContent>

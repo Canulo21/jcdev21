@@ -54,7 +54,7 @@ function ProjectIndex() {
 
   return (
     <>
-      <h1 className="!mb-15">Welcom Master JC!</h1>
+      <h1 className="!mb-15">Welcome Master JC!</h1>
 
       <Table>
         <TableCaption>A list of your recent projects.</TableCaption>
@@ -63,7 +63,7 @@ function ProjectIndex() {
             <TableHead className="w-[100px]">No.</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Category</TableHead>
-            <TableHead>Url</TableHead>
+            <TableHead>Website</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -73,7 +73,16 @@ function ProjectIndex() {
               <TableCell className="font-medium">{i + 1}</TableCell>
               <TableCell>{item.title}</TableCell>
               <TableCell>{item.category?.name}</TableCell>
-              <TableCell>{item.live_url}</TableCell>
+              <TableCell>
+                <a
+                  className="hover:text-red-600"
+                  href={item.live_url}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {item.live_url}
+                </a>
+              </TableCell>
               <TableCell className="text-right">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="px-4 py-2 border-2 border-red-600 bg-transparent data-[state=open]:text-white data-[state=open]:bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary)] hover:text-white rounded-sm">

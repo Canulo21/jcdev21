@@ -55,7 +55,7 @@ function CertificateIndex() {
 
   return (
     <>
-      <h1 className="!mb-15">Welcom Master JC!</h1>
+      <h1 className="!mb-15">Welcome Master JC!</h1>
       <Table>
         <TableCaption>A list of your certificates.</TableCaption>
         <TableHeader>
