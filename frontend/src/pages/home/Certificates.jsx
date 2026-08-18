@@ -19,6 +19,8 @@ import apiFetch from "@/lib/api";
 import { Skeleton } from "@/components/ui/skeleton";
 
 function Certificates() {
+  const backendUrl = import.meta.env.VITE_API_URL.replace("/api", "");
+
   const [view, setView] = useState("gridview");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +33,7 @@ function Certificates() {
   const getCertificates = async () => {
     try {
       const data = await apiFetch("certifications");
+      console.log("cert", data);
       setGetCertificate(data);
     } catch (err) {
       console.error("Failed to fetch certificates:", err);
@@ -155,8 +158,12 @@ function Certificates() {
                       <Card className="bg-transparent">
                         <CardContent className="flex flex-col md:flex-row items-center justify-center p-2 xl:p-6 gap-6 xl:gap-10">
                           <div className="w-full sm:w-1/2">
-                            {item.img ? (
-                              <img src={item.img} alt={item.title} />
+                            {item.image ? (
+                              <img
+                                src={`${backendUrl}/storage/${item.image}`}
+                                alt={item.title}
+                                className="object-cover"
+                              />
                             ) : (
                               <div className="w-full h-[140px] bg-[var(--bg-primary)]">
                                 <FaMedal size={80} color="#fff" />
@@ -232,11 +239,11 @@ function Certificates() {
                   spotlightColor="rgba(0, 229, 255, 0.2)"
                 >
                   <div>
-                    {item.img ? (
+                    {item.image ? (
                       <img
-                        src={item.img}
+                        src={`${backendUrl}/storage/${item.image}`}
                         alt={item.title}
-                        className=" w-full h-[140xp]"
+                        className=" w-full h-[140px] object-cover"
                       />
                     ) : (
                       <div className="w-full h-[140px] bg-[var(--bg-primary)]">
