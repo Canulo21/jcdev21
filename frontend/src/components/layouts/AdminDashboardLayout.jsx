@@ -15,7 +15,7 @@ export default function AdminDashboardLayout() {
 
       <main className="w-full">
         <SidebarTrigger />
-        <div className="p-6">
+        <div className="p-2 lg:p-6">
           <Outlet />
         </div>
       </main>

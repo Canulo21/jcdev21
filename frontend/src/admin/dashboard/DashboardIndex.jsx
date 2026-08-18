@@ -46,9 +46,9 @@ function DashboardIndex() {
       <h1 className="!mb-15">Welcom Master JC!</h1>
 
       <h6>Projects</h6>
-      <div className="grid grid-cols-3 [&>div]:border-2 [&>div]:rounded-lg [&>div]:overflow-hidden gap-4  mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 [&>div]:border-2 [&>div]:rounded-lg [&>div]:overflow-hidden gap-2 lg:gap-4  mt-6">
         <div className="flex items-normal">
-          <div className="flex flex-col items-center gap-2 w-[20%] bg-red-600 text-white justify-center">
+          <div className="flex flex-col items-center gap-2 p-5 w-[30%] bg-red-600 text-white justify-center">
             <FaWordpress size={30} />
             <p className="font-medium">WordPress</p>
           </div>
@@ -57,7 +57,7 @@ function DashboardIndex() {
           </div>
         </div>
         <div className="flex items-normal">
-          <div className="flex flex-col items-center gap-2 w-[20%] bg-red-700 justify-center text-white">
+          <div className="flex flex-col items-center gap-2 w-[30%] bg-red-700 justify-center text-white">
             <FaCode size={30} />
             <p className="font-medium">Frontend</p>
           </div>
@@ -66,7 +66,7 @@ function DashboardIndex() {
           </div>
         </div>
         <div className="flex items-normal">
-          <div className="flex flex-col items-center gap-2 w-[20%] bg-red-900 justify-center text-white">
+          <div className="flex flex-col items-center gap-2 w-[30%] bg-red-900 justify-center text-white">
             <FaCode size={30} />
             <p className="font-medium">Fullstack</p>
           </div>
@@ -79,9 +79,9 @@ function DashboardIndex() {
       <Separator className="my-10" />
 
       <h6>Certificates</h6>
-      <div className="grid grid-cols-3 [&>div]:border-2 [&>div]:rounded-lg [&>div]:overflow-hidden gap-4  mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 [&>div]:border-2 [&>div]:rounded-lg [&>div]:overflow-hidden gap-2 lg:gap-4  mt-6">
         <div className="flex items-normal">
-          <div className="flex flex-col items-center gap-2 w-[20%] bg-red-600 text-white justify-center">
+          <div className="flex flex-col items-center gap-2 w-[30%] bg-red-600 text-white justify-center">
             <FaNewspaper size={30} />
             <p className="font-medium">Certificates</p>
           </div>

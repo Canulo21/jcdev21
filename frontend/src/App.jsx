@@ -10,6 +10,8 @@ import DashboardIndex from "./admin/dashboard/DashboardIndex";
 import AdminDashboardLayout from "./components/layouts/AdminDashboardLayout";
 import ProjectIndex from "./admin/dashboard/ProjectIndex";
 import CertificateIndex from "./admin/dashboard/CertificateIndex";
+import ExperienceIndex from "./admin/dashboard/ExperienceIndex";
+import GuestRoute from "./components/GuestRoute";
 
 function App() {
   useEffect(() => {
@@ -27,12 +29,15 @@ function App() {
         </Route>
 
         {/* Login */}
-        <Route path="/jc-login" element={<Login />} />
+        <Route element={<GuestRoute />}>
+          <Route path="/jc-login" element={<Login />} />
+        </Route>
 
         {/* Dashboard */}
         <Route element={<AdminDashboardLayout />}>
           <Route path="/dashboard" element={<DashboardIndex />} />
           <Route path="/projects" element={<ProjectIndex />} />
+          <Route path="/experiences" element={<ExperienceIndex />} />
           <Route path="/certificates" element={<CertificateIndex />} />
         </Route>
 

@@ -24,6 +24,10 @@ const menus = [
     url: "/projects",
   },
   {
+    title: "experiences",
+    url: "/experiences",
+  },
+  {
     title: "certificates",
     url: "/certificates",
   },
