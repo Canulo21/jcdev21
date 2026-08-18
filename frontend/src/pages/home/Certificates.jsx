@@ -189,7 +189,7 @@ function Certificates() {
                                 credential id:
                               </span>
                               <p className="text-xs xl:text-md text-muted-foreground truncate max-w-[80px] sm:max-w-[150px] lg:max-w-xl">
-                                {item.credential_id}
+                                {item.cred_id}
                               </p>
                             </div>
                             <Button
