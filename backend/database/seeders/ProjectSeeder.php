@@ -27,7 +27,7 @@ class ProjectSeeder extends Seeder
                 'title' => 'Msvvs',
                 'description' => 'Don Anselmo Bernad Avenue, Ozamiz',
                 'image' => '',
-                'github_url' => '#',
+                'github_url' => '',
                 'live_url' => 'https://msvvs.dk/',
                 'category_id' => 2,
             ],

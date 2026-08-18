@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('completed');
             $table->string('cred_id');
             $table->string('url');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

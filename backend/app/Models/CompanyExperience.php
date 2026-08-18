@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompanyExperience extends Model
 {
     //
-    public function company()
+    public function companies()
     {
         return $this->belongsTo(Company::class);
     }
