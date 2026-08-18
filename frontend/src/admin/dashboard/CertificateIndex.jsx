@@ -86,7 +86,6 @@ function CertificateIndex() {
         image: null,
       });
     } catch (err) {
-      console.log("error", err);
       toast.error(`Failed to add new: ${err.message}`);
     }
   };

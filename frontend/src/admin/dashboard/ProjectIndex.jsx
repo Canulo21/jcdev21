@@ -15,21 +15,96 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import apiFetch from "@/lib/api";
-import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
+import { FaPencilAlt, FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Field, FieldGroup } from "@/components/ui/field";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function ProjectIndex() {
   const [getProject, setGetProject] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category_id: "",
+    github_url: "",
+    live_url: "",
+    image: null,
+  });
 
   const getProjects = async () => {
     try {
       const data = await apiFetch("projects");
-      console.log("ss", data);
       setGetProject(data);
     } catch (err) {
       console.error("Failed to fetch certificates:", err);
+    }
+  };
+
+  const getCategories = async () => {
+    try {
+      const data = await apiFetch("categories");
+      setCategories(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = new FormData();
+
+      body.append("title", formData.title);
+      body.append("description", formData.description);
+      body.append("category_id", formData.category_id);
+      body.append("github_url", formData.github_url);
+      body.append("live_url", formData.live_url);
+      body.append("image", formData.image);
+
+      if (formData.image) {
+        body.append("image", formData.image);
+      }
+
+      const data = await apiFetch("add-project", {
+        method: "POST",
+        body,
+      });
+
+      toast.success(data.message);
+      getProjects();
+
+      setFormData({
+        title: "",
+        description: "",
+        category_id: "",
+        github_url: "",
+        live_url: "",
+        image: null,
+      });
+    } catch (err) {
+      toast.error(`Failed to add new: ${err.message}`);
     }
   };
 
@@ -50,11 +125,126 @@ function ProjectIndex() {
 
   useEffect(() => {
     getProjects();
+    getCategories();
   }, []);
 
   return (
     <>
       <h1 className="!mb-15">Welcome Master JC!</h1>
+
+      {/* Add Form */}
+      <Dialog>
+        <DialogTrigger className="py-2 px-6 bg-[var(--bg-secondary)] text-white rounded-md flex gap-4 items-center float-end">
+          <FaPlusCircle />
+          Add Project
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-sm">
+          <form onSubmit={handleSubmit}>
+            <DialogHeader>
+              <DialogTitle className="!text-xl">Add New Project</DialogTitle>
+              <DialogDescription className="mb-4">
+                Add a new project for your portfolio. Enter the details below
+                and click save when you&apos;re done.
+              </DialogDescription>
+            </DialogHeader>
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="title">Title</Label>
+                <Input
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  placeholder="The Legen of JC"
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="category">Category</Label>
+
+                <Select
+                  value={formData.category_id}
+                  onValueChange={(value) =>
+                    setFormData({
+                      ...formData,
+                      category_id: value,
+                    })
+                  }
+                >
+                  <SelectTrigger id="category">
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category.id} value={String(category.id)}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </Field>
+              <Field>
+                <Label htmlFor="description">Description</Label>
+                <Input
+                  id="description"
+                  name="description"
+                  placeholder="JC"
+                  value={formData.description}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="github_url">Github Url</Label>
+                <Input
+                  id="github_url"
+                  name="github_url"
+                  placeholder="JC Github"
+                  value={formData.github_url}
+                  onChange={(e) =>
+                    setFormData({ ...formData, github_url: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="live_url">Live Url</Label>
+                <Input
+                  id="live_url"
+                  name="live_url"
+                  placeholder="https://jcdev21.vercel.app/"
+                  value={formData.live_url}
+                  onChange={(e) =>
+                    setFormData({ ...formData, live_url: e.target.value })
+                  }
+                />
+              </Field>
+
+              <Field>
+                <Label htmlFor="image">Certificate Image</Label>
+                <Input
+                  id="image"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      image: e.target.files[0],
+                    })
+                  }
+                />
+              </Field>
+            </FieldGroup>
+            <DialogFooter>
+              <DialogClose render={<Button variant="outline">Cancel</Button>} />
+              <Button type="submit">Save</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Table>
         <TableCaption>A list of your recent projects.</TableCaption>

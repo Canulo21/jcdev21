@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 
 function Projects() {
+  const backendUrl = import.meta.env.VITE_API_URL.replace("/api", "");
   const [isLoading, setIsLoading] = useState(true);
   const [getProject, setGetProject] = useState([]);
   const [view, setView] = useState("wordpressview");
@@ -143,7 +144,7 @@ function Projects() {
                         <div className="flex flex-col h-full">
                           {item.image ? (
                             <img
-                              src={item.image}
+                              src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
                               className=" w-full h-[140xp]"
                             />
@@ -262,7 +263,7 @@ function Projects() {
                         <div className="flex flex-col h-full">
                           {item.image ? (
                             <img
-                              src={item.image}
+                              src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
                               className=" w-full h-[140xp]"
                             />
@@ -381,7 +382,7 @@ function Projects() {
                         <div className="flex flex-col h-full">
                           {item.image ? (
                             <img
-                              src={item.image}
+                              src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
                               className=" w-full h-[140xp]"
                             />
