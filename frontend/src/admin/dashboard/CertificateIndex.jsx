@@ -34,6 +34,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 function CertificateIndex() {
+  const [editCertificate, setEditCertificate] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [getCertificate, setGetCertificate] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -87,6 +89,68 @@ function CertificateIndex() {
       });
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setEditCertificate(item);
+
+    setFormData({
+      title: item.title || "",
+      provider: item.provider || "",
+      completed: item.completed || "",
+      cred_id: item.cred_id || "",
+      url: item.url || "",
+    });
+
+    setIsEditOpen(true);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = new FormData();
+
+      body.append("title", formData.title);
+      body.append("provider", formData.provider);
+      body.append("completed", formData.completed);
+      body.append("cred_id", formData.cred_id);
+      body.append("url", formData.url);
+
+      // Tell Laravel this POST request is actually an update
+      body.append("_method", "PUT");
+
+      if (formData.image) {
+        body.append("image", formData.image);
+      }
+
+      const data = await apiFetch(
+        `certificates/certificate-${editCertificate.id}`,
+        {
+          method: "POST",
+          body,
+        },
+      );
+
+      toast.success(data.message);
+
+      getCertificates();
+
+      setFormData({
+        title: "",
+        provider: "",
+        completed: "",
+        cred_id: "",
+        url: "",
+        image: null,
+      });
+
+      setEditCertificate(null);
+      setIsEditOpen(false);
+    } catch (err) {
+      console.log("error", err);
+      toast.error(`Failed to update certificate: ${err.message}`);
     }
   };
 
@@ -240,10 +304,11 @@ function CertificateIndex() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Button
                           variant="outline"
                           className="flex gap-2 items-center w-full"
+                          onClick={() => handleEdit(item)}
                         >
                           <FaPencilAlt /> Edit
                         </Button>
@@ -265,6 +330,101 @@ function CertificateIndex() {
           ))}
         </TableBody>
       </Table>
+
+      {/* Edit Modal */}
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent className="sm:max-w-sm">
+          <form onSubmit={handleUpdate}>
+            <DialogHeader>
+              <DialogTitle className="!text-xl">Edit Certiicate</DialogTitle>
+              <DialogDescription className="mb-4">
+                Enter the details below and click save when you&apos;re done.
+              </DialogDescription>
+            </DialogHeader>
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="title">Title</Label>
+                <Input
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  placeholder="The Legen of JC"
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="provider">Provider</Label>
+                <Input
+                  id="provider"
+                  name="provider"
+                  placeholder="JC"
+                  value={formData.provider}
+                  onChange={(e) =>
+                    setFormData({ ...formData, provider: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="completed">Completed</Label>
+                <Input
+                  id="completed"
+                  name="completed"
+                  placeholder="May 30, 1997"
+                  value={formData.completed}
+                  onChange={(e) =>
+                    setFormData({ ...formData, completed: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="cred_id">Credential ID</Label>
+                <Input
+                  id="cred_id"
+                  name="cred_id"
+                  placeholder="123 abc !@#"
+                  value={formData.cred_id}
+                  onChange={(e) =>
+                    setFormData({ ...formData, cred_id: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="url">Url</Label>
+                <Input
+                  id="url"
+                  name="url"
+                  placeholder="https://"
+                  value={formData.url}
+                  onChange={(e) =>
+                    setFormData({ ...formData, url: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="image">Certificate Image</Label>
+                <Input
+                  id="image"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      image: e.target.files[0],
+                    })
+                  }
+                />
+              </Field>
+            </FieldGroup>
+            <DialogFooter>
+              <DialogClose render={<Button variant="outline">Cancel</Button>} />
+              <Button type="submit">Save</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
