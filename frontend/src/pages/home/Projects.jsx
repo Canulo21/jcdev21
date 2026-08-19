@@ -146,7 +146,7 @@ function Projects() {
                             <img
                               src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
-                              className=" w-full h-[140xp]"
+                              className=" w-full h-[140px] object-cover"
                             />
                           ) : (
                             <div className="w-full h-[140px] bg-[var(--bg-primary)] ">
@@ -265,7 +265,7 @@ function Projects() {
                             <img
                               src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
-                              className=" w-full h-[140xp]"
+                              className=" w-full h-[140px] object-cover"
                             />
                           ) : (
                             <div className="w-full h-[140px] bg-[var(--bg-primary)]">
@@ -384,7 +384,7 @@ function Projects() {
                             <img
                               src={`${backendUrl}/storage/${item.image}`}
                               alt={item.title}
-                              className=" w-full h-[140xp]"
+                              className=" w-full h-[140px] object-cover"
                             />
                           ) : (
                             <div className="w-full h-[140px] bg-[var(--bg-primary)]">

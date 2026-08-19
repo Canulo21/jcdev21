@@ -40,8 +40,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import ReactSelect from "react-select";
+import { Textarea } from "@/components/ui/textarea";
+
+const frameworks = [
+  { value: "ocean", label: "Ocean" },
+  { value: "blue", label: "Blue" },
+  { value: "purple", label: "Purple" },
+  { value: "red", label: "Red" },
+];
+
 function ProjectIndex() {
+  const [value, setValue] = useState([]);
+
   const [getProject, setGetProject] = useState([]);
+  const [getTag, setGetTag] = useState([]);
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -50,6 +63,7 @@ function ProjectIndex() {
     github_url: "",
     live_url: "",
     image: null,
+    tags: [],
   });
 
   const getProjects = async () => {
@@ -57,9 +71,24 @@ function ProjectIndex() {
       const data = await apiFetch("projects");
       setGetProject(data);
     } catch (err) {
-      console.error("Failed to fetch certificates:", err);
+      console.error("Failed to fetch projects:", err);
     }
   };
+
+  const getTags = async () => {
+    try {
+      const data = await apiFetch("tags");
+      setGetTag(data);
+      console.log("tags", data);
+    } catch (err) {
+      console.error("Failed to fetch tags:", err);
+    }
+  };
+
+  const tagOptions = getTag.map((tag) => ({
+    value: tag.id,
+    label: tag.name,
+  }));
 
   const getCategories = async () => {
     try {
@@ -87,6 +116,10 @@ function ProjectIndex() {
         body.append("image", formData.image);
       }
 
+      formData.tags.forEach((tag) => {
+        body.append("tags[]", tag.value);
+      });
+
       const data = await apiFetch("add-project", {
         method: "POST",
         body,
@@ -102,6 +135,7 @@ function ProjectIndex() {
         github_url: "",
         live_url: "",
         image: null,
+        tags: [],
       });
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
@@ -125,6 +159,7 @@ function ProjectIndex() {
 
   useEffect(() => {
     getProjects();
+    getTags();
     getCategories();
   }, []);
 
@@ -185,15 +220,37 @@ function ProjectIndex() {
                   </SelectContent>
                 </Select>
               </Field>
+
+              <Field>
+                <Label htmlFor="tag">Tags</Label>
+                <ReactSelect
+                  defaultValue={frameworks[1]}
+                  isMulti
+                  name="frameworks"
+                  options={tagOptions}
+                  value={formData.tags}
+                  onChange={(selected) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      tags: selected || [],
+                    }))
+                  }
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                />
+              </Field>
+
               <Field>
                 <Label htmlFor="description">Description</Label>
-                <Input
-                  id="description"
+                <Textarea
                   name="description"
-                  placeholder="JC"
+                  placeholder="Project description"
                   value={formData.description}
                   onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
+                    setFormData((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
                   }
                 />
               </Field>

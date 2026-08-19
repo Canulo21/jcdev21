@@ -34,15 +34,19 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 function TechStackIndex() {
+  const [editTag, setEditTag] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [getTag, setgetTag] = useState([]);
-  const [name, setName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+  });
 
   const getTags = async () => {
     try {
       const data = await apiFetch("tags");
       setgetTag(data);
     } catch (err) {
-      console.error("Failed to fetch certificates:", err);
+      console.error("Failed to fetch tags:", err);
     }
   };
 
@@ -53,16 +57,57 @@ function TechStackIndex() {
       const data = await apiFetch("add-tag", {
         method: "POST",
         body: JSON.stringify({
-          name,
+          name: formData.name,
         }),
       });
 
       toast.success(data.message);
+
       getTags();
-      setName("");
+
+      setFormData({
+        name: "",
+      });
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to add new: ${err.message}`);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setEditTag(item);
+
+    setFormData({
+      name: item.name || "",
+    });
+
+    setIsEditOpen(true);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = await apiFetch(`tags/tag-${editTag.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          name: formData.name,
+        }),
+      });
+
+      toast.success(data.message);
+
+      getTags();
+
+      setFormData({
+        name: "",
+      });
+
+      setEditTag(null);
+      setIsEditOpen(false);
+    } catch (err) {
+      console.log("error", err);
+      toast.error(`Failed to update tag: ${err.message}`);
     }
   };
 
@@ -146,10 +191,11 @@ function TechStackIndex() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Button
                           variant="outline"
                           className="flex gap-2 items-center w-full"
+                          onClick={() => handleEdit(item)}
                         >
                           <FaPencilAlt /> Edit
                         </Button>
@@ -171,6 +217,45 @@ function TechStackIndex() {
           ))}
         </TableBody>
       </Table>
+
+      {/* edit modal */}
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent className="sm:max-w-sm">
+          <form onSubmit={handleUpdate}>
+            <DialogHeader>
+              <DialogTitle className="!text-xl">Edit Tech Stack</DialogTitle>
+
+              <DialogDescription className="mb-4">
+                Update the technology name.
+              </DialogDescription>
+            </DialogHeader>
+
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="edit-name">Name</Label>
+
+                <Input
+                  id="edit-name"
+                  value={formData.name}
+                  placeholder="Laravel"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
+                  }
+                />
+              </Field>
+            </FieldGroup>
+
+            <DialogFooter className="mt-4">
+              <DialogClose render={<Button variant="outline">Cancel</Button>} />
+
+              <Button type="submit">Update</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
