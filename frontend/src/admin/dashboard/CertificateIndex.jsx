@@ -106,6 +106,18 @@ function CertificateIndex() {
     setIsEditOpen(true);
   };
 
+  const resetForm = () => {
+    setFormData({
+      title: "",
+      description: "",
+      category_id: "",
+      github_url: "",
+      live_url: "",
+      image: null,
+      tags: [],
+    });
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -137,14 +149,7 @@ function CertificateIndex() {
 
       getCertificates();
 
-      setFormData({
-        title: "",
-        provider: "",
-        completed: "",
-        cred_id: "",
-        url: "",
-        image: null,
-      });
+      resetForm();
 
       setEditCertificate(null);
       setIsEditOpen(false);
@@ -332,7 +337,17 @@ function CertificateIndex() {
       </Table>
 
       {/* Edit Modal */}
-      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+      <Dialog
+        open={isEditOpen}
+        onOpenChange={(open) => {
+          setIsEditOpen(open);
+
+          if (!open) {
+            resetForm();
+            setEditProject(null);
+          }
+        }}
+      >
         <DialogContent className="sm:max-w-sm">
           <form onSubmit={handleUpdate}>
             <DialogHeader>

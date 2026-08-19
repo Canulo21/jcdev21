@@ -162,6 +162,18 @@ function ProjectIndex() {
     setIsEditOpen(true);
   };
 
+  const resetForm = () => {
+    setFormData({
+      title: "",
+      description: "",
+      category_id: "",
+      github_url: "",
+      live_url: "",
+      image: null,
+      tags: [],
+    });
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -194,15 +206,7 @@ function ProjectIndex() {
 
       getProjects();
 
-      setFormData({
-        title: "",
-        description: "",
-        category_id: "",
-        github_url: "",
-        live_url: "",
-        image: null,
-        tags: [],
-      });
+      resetForm();
 
       setEditProject(null);
       setIsEditOpen(false);
@@ -435,7 +439,17 @@ function ProjectIndex() {
       </Table>
 
       {/* Edit MOdal */}
-      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+      <Dialog
+        open={isEditOpen}
+        onOpenChange={(open) => {
+          setIsEditOpen(open);
+
+          if (!open) {
+            resetForm();
+            setEditProject(null);
+          }
+        }}
+      >
         <DialogContent className="sm:max-w-sm">
           <form onSubmit={handleUpdate}>
             <DialogHeader>
