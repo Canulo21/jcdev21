@@ -65,9 +65,7 @@ function TechStackIndex() {
 
       getTags();
 
-      setFormData({
-        name: "",
-      });
+      resetForm();
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to add new: ${err.message}`);
@@ -82,6 +80,12 @@ function TechStackIndex() {
     });
 
     setIsEditOpen(true);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+    });
   };
 
   const handleUpdate = async (e) => {
@@ -99,9 +103,7 @@ function TechStackIndex() {
 
       getTags();
 
-      setFormData({
-        name: "",
-      });
+      resetForm();
 
       setEditTag(null);
       setIsEditOpen(false);
@@ -155,8 +157,13 @@ function TechStackIndex() {
                   id="name-1"
                   name="name"
                   defaultValue="React"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
+                  }
                 />
               </Field>
             </FieldGroup>
@@ -219,7 +226,17 @@ function TechStackIndex() {
       </Table>
 
       {/* edit modal */}
-      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+      <Dialog
+        open={isEditOpen}
+        onOpenChange={(open) => {
+          setIsEditOpen(open);
+
+          if (!open) {
+            resetForm();
+            setEditProject(null);
+          }
+        }}
+      >
         <DialogContent className="sm:max-w-sm">
           <form onSubmit={handleUpdate}>
             <DialogHeader>
@@ -232,10 +249,10 @@ function TechStackIndex() {
 
             <FieldGroup>
               <Field>
-                <Label htmlFor="edit-name">Name</Label>
+                <Label htmlFor="name">Name</Label>
 
                 <Input
-                  id="edit-name"
+                  id="name"
                   value={formData.name}
                   placeholder="Laravel"
                   onChange={(e) =>

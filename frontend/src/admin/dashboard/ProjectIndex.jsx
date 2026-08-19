@@ -128,15 +128,7 @@ function ProjectIndex() {
       toast.success(data.message);
       getProjects();
 
-      setFormData({
-        title: "",
-        description: "",
-        category_id: "",
-        github_url: "",
-        live_url: "",
-        image: null,
-        tags: [],
-      });
+      resetForm();
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
     }

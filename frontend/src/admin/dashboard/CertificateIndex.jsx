@@ -79,14 +79,7 @@ function CertificateIndex() {
       toast.success(data.message);
       getCertificates();
 
-      setFormData({
-        title: "",
-        provider: "",
-        completed: "",
-        cred_id: "",
-        url: "",
-        image: null,
-      });
+      resetForm();
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
     }
