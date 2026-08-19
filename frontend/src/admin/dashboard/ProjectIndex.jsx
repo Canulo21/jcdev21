@@ -51,8 +51,8 @@ const frameworks = [
 ];
 
 function ProjectIndex() {
-  const [value, setValue] = useState([]);
-
+  const [editProject, setEditProject] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [getProject, setGetProject] = useState([]);
   const [getTag, setGetTag] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -139,6 +139,76 @@ function ProjectIndex() {
       });
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setEditProject(item);
+
+    setFormData({
+      title: item.title || "",
+      description: item.description || "",
+      category_id: item.category?.id ? String(item.category.id) : "",
+      github_url: item.github_url || "",
+      live_url: item.live_url || "",
+      image: item.image || null,
+
+      tags: (item.tags || []).map((tag) => ({
+        value: tag.id,
+        label: tag.name,
+      })),
+    });
+
+    setIsEditOpen(true);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = new FormData();
+
+      body.append("title", formData.title);
+      body.append("description", formData.description);
+      body.append("category_id", formData.category_id);
+      body.append("github_url", formData.github_url);
+      body.append("live_url", formData.live_url);
+
+      // Tell Laravel this POST request is actually an update
+      body.append("_method", "PUT");
+
+      if (formData.image) {
+        body.append("image", formData.image);
+      }
+
+      formData.tags.forEach((tag) => {
+        body.append("tags[]", tag.value);
+      });
+
+      const data = await apiFetch(`projects/project-${editProject.id}`, {
+        method: "POST",
+        body,
+      });
+
+      toast.success(data.message);
+
+      getProjects();
+
+      setFormData({
+        title: "",
+        description: "",
+        category_id: "",
+        github_url: "",
+        live_url: "",
+        image: null,
+        tags: [],
+      });
+
+      setEditProject(null);
+      setIsEditOpen(false);
+    } catch (err) {
+      console.log("error", err);
+      toast.error(`Failed to update certificate: ${err.message}`);
     }
   };
 
@@ -337,10 +407,11 @@ function ProjectIndex() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Button
                           variant="outline"
                           className="flex gap-2 items-center w-full"
+                          onClick={() => handleEdit(item)}
                         >
                           <FaPencilAlt /> Edit
                         </Button>
@@ -362,6 +433,138 @@ function ProjectIndex() {
           ))}
         </TableBody>
       </Table>
+
+      {/* Edit MOdal */}
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent className="sm:max-w-sm">
+          <form onSubmit={handleUpdate}>
+            <DialogHeader>
+              <DialogTitle className="!text-xl">Add New Project</DialogTitle>
+              <DialogDescription className="mb-4">
+                Add a new project for your portfolio. Enter the details below
+                and click save when you&apos;re done.
+              </DialogDescription>
+            </DialogHeader>
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="title">Title</Label>
+                <Input
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  placeholder="The Legen of JC"
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="category">Category</Label>
+
+                <Select
+                  value={formData.category_id}
+                  onValueChange={(value) =>
+                    setFormData({
+                      ...formData,
+                      category_id: value,
+                    })
+                  }
+                >
+                  <SelectTrigger id="category">
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category.id} value={String(category.id)}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </Field>
+
+              <Field>
+                <Label htmlFor="tag">Tags</Label>
+                <ReactSelect
+                  defaultValue={frameworks[1]}
+                  isMulti
+                  name="frameworks"
+                  options={tagOptions}
+                  value={formData.tags}
+                  onChange={(selected) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      tags: selected || [],
+                    }))
+                  }
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                />
+              </Field>
+
+              <Field>
+                <Label htmlFor="description">Description</Label>
+                <Textarea
+                  name="description"
+                  placeholder="Project description"
+                  value={formData.description}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="github_url">Github Url</Label>
+                <Input
+                  id="github_url"
+                  name="github_url"
+                  placeholder="JC Github"
+                  value={formData.github_url}
+                  onChange={(e) =>
+                    setFormData({ ...formData, github_url: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="live_url">Live Url</Label>
+                <Input
+                  id="live_url"
+                  name="live_url"
+                  placeholder="https://jcdev21.vercel.app/"
+                  value={formData.live_url}
+                  onChange={(e) =>
+                    setFormData({ ...formData, live_url: e.target.value })
+                  }
+                />
+              </Field>
+
+              <Field>
+                <Label htmlFor="image">Certificate Image</Label>
+                <Input
+                  id="image"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      image: e.target.files[0],
+                    })
+                  }
+                />
+              </Field>
+            </FieldGroup>
+            <DialogFooter>
+              <DialogClose render={<Button variant="outline">Cancel</Button>} />
+              <Button type="submit">Save</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

@@ -188,8 +188,8 @@ function CertificateIndex() {
             <DialogHeader>
               <DialogTitle className="!text-xl">Add New Certiicate</DialogTitle>
               <DialogDescription className="mb-4">
-                Add a new technology to your tech stack. Enter the details below
-                and click save when you&apos;re done.
+                Add a new certificate to your portfolio. Enter the certificate
+                details below and click Save when you're done.
               </DialogDescription>
             </DialogHeader>
             <FieldGroup>
