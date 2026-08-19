@@ -79,7 +79,6 @@ function ProjectIndex() {
     try {
       const data = await apiFetch("tags");
       setGetTag(data);
-      console.log("tags", data);
     } catch (err) {
       console.error("Failed to fetch tags:", err);
     }

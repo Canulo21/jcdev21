@@ -119,24 +119,26 @@ export default function Experience() {
                     className="custom-spotlight-card "
                     spotlightColor="rgba(0, 229, 255, 0.2)"
                   >
-                    {company.experiences.map((role, i) => (
-                      <div key={i} className="mb-4 text-left">
+                    {[...company.experiences].reverse().map((role, i) => (
+                      <div key={role.id ?? i} className="mb-4 text-left">
                         <Typography variant="h6" component="span">
                           {role.position}
                         </Typography>
+
                         <Typography
                           variant="body2"
                           className="text-muted-foreground !font-medium !text-xs"
                         >
                           {role.duration}
                         </Typography>
-                        <ul className="mt-5 list-disc">
-                          {role.description.split("\n").map((item, index) => (
+
+                        <ul className="mt-5 list-disc pl-5">
+                          {role.description.split("\\n").map((item, index) => (
                             <li
                               className="text-sm mt-4 text-white/70"
                               key={index}
                             >
-                              {item}
+                              {item.trim()}
                             </li>
                           ))}
                         </ul>
