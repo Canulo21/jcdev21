@@ -21,7 +21,7 @@ class CompanyExperienceSeeder extends Seeder
                 'duration' => '2023 - Present',
                 'description' => "Built dynamic websites using Advanced Custom Fields (ACF), custom post types, and custom taxonomies.\\n Implemented basic SEO best practices (meta tags, schema, image optimization).\\n Optimized website performance by improving Core Web Vitals, image loading, caching, and asset delivery.",
             ],
-            [
+            [ 
                 'company_id' => '1',
                 'position' => 'Junior Web Developer',
                 'duration' => '2021 - 2023',

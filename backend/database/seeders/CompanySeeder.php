@@ -18,7 +18,7 @@ class CompanySeeder extends Seeder
         $data_companies = [
             [
                 'company_name' => '24 Creative Media Solutions inc.',
-                'company_addresse' => 'Alabang, Montinlupa City, Philippines',
+                'company_addresse' => 'Alabang, Muntinlupa City, Philippines',
                 'company_website' => 'https://24cms.com/',
             ],
             [

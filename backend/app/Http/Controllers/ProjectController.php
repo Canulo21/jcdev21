@@ -11,7 +11,9 @@ class ProjectController extends Controller
     //
     public function index()
     {
-        $projects = Project::with(['tags', 'category'])->get();
+        $projects = Project::with(['tags', 'category']) 
+            ->latest()
+            ->get();
 
         return response()->json($projects);
     }

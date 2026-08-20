@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class CertficationController extends Controller
 {
-    //Tester 21
+    //
     
     public function index()
     {
-        $certificates = Certification::get();
+        $certificates = Certification::latest()->get();
 
         return response()->json($certificates);
     }
@@ -25,6 +25,8 @@ class CertficationController extends Controller
             'completed' => 'required|string|max:255',
             'cred_id' => 'required|string|max:255',
             'url' => 'required|string|max:255',
+
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         $imagePath = $request->file('image')->store('certifications', 'public');
@@ -34,7 +36,7 @@ class CertficationController extends Controller
         $certificate = Certification::create($validated);
 
         return response()->json([
-            'message' => 'Tech stack added successfully',
+            'message' => 'Certificate added successfully',
             'certificate' => $certificate,
         ], 201);
     }

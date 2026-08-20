@@ -11,7 +11,25 @@ class CompanyController extends Controller
     //
     public function index()
     {
-        $companies = Company::with('experiences')->get();
+        $companies = Company::select([
+        'id',
+        'company_name',
+        'company_addresse',
+        'company_website',
+    ])
+    ->with([
+        'experiences' => function ($query) {
+            $query->select([
+                'id',
+                'company_id',
+                'position',
+                'duration',
+                'description',
+            ]);
+        }
+    ])
+    ->latest()
+    ->get();
 
         return response()->json($companies);
     }
