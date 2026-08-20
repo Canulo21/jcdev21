@@ -62,8 +62,6 @@ function ExperienceIndex() {
     try {
       const data = await apiFetch("companies");
 
-      console.log("companies:", data);
-
       setGetCompany(data);
     } catch (err) {
       console.error("Failed to fetch companies:", err);
