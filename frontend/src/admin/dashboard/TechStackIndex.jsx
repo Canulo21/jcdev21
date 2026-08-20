@@ -35,6 +35,7 @@ import { Button } from "@/components/ui/button";
 
 function TechStackIndex() {
   const [editTag, setEditTag] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [getTag, setgetTag] = useState([]);
   const [formData, setFormData] = useState({
@@ -53,6 +54,8 @@ function TechStackIndex() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       const data = await apiFetch("add-tag", {
         method: "POST",
@@ -69,6 +72,8 @@ function TechStackIndex() {
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to add new: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -91,6 +96,8 @@ function TechStackIndex() {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       const data = await apiFetch(`tags/tag-${editTag.id}`, {
         method: "PUT",
@@ -110,6 +117,8 @@ function TechStackIndex() {
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to update tag: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -169,7 +178,9 @@ function TechStackIndex() {
             </FieldGroup>
             <DialogFooter>
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Saving..." : "Save"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -268,7 +279,9 @@ function TechStackIndex() {
             <DialogFooter className="mt-4">
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
 
-              <Button type="submit">Update</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Updating..." : "Update"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>

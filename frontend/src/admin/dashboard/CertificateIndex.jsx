@@ -34,6 +34,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 function CertificateIndex() {
+  const [isLoading, setIsLoading] = useState(false);
   const [editCertificate, setEditCertificate] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [getCertificate, setGetCertificate] = useState([]);
@@ -57,6 +58,8 @@ function CertificateIndex() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     try {
       const body = new FormData();
@@ -82,6 +85,8 @@ function CertificateIndex() {
       resetForm();
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -113,6 +118,8 @@ function CertificateIndex() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     try {
       const body = new FormData();
@@ -149,6 +156,8 @@ function CertificateIndex() {
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to update certificate: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -269,7 +278,9 @@ function CertificateIndex() {
             </FieldGroup>
             <DialogFooter>
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Saving..." : "Save"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -428,7 +439,9 @@ function CertificateIndex() {
             </FieldGroup>
             <DialogFooter>
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Updating..." : "Update"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>

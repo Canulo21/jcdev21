@@ -43,14 +43,8 @@ import {
 import ReactSelect from "react-select";
 import { Textarea } from "@/components/ui/textarea";
 
-const frameworks = [
-  { value: "ocean", label: "Ocean" },
-  { value: "blue", label: "Blue" },
-  { value: "purple", label: "Purple" },
-  { value: "red", label: "Red" },
-];
-
 function ProjectIndex() {
+  const [isLoading, setIsLoading] = useState(false);
   const [editProject, setEditProject] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [getProject, setGetProject] = useState([]);
@@ -101,6 +95,8 @@ function ProjectIndex() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       const body = new FormData();
 
@@ -130,6 +126,8 @@ function ProjectIndex() {
       resetForm();
     } catch (err) {
       toast.error(`Failed to add new: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -168,6 +166,8 @@ function ProjectIndex() {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       const body = new FormData();
 
@@ -204,6 +204,8 @@ function ProjectIndex() {
     } catch (err) {
       console.log("error", err);
       toast.error(`Failed to update certificate: ${err.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -289,9 +291,8 @@ function ProjectIndex() {
               <Field>
                 <Label htmlFor="tag">Tags</Label>
                 <ReactSelect
-                  defaultValue={frameworks[1]}
                   isMulti
-                  name="frameworks"
+                  name="tag"
                   options={tagOptions}
                   value={formData.tags}
                   onChange={(selected) =>
@@ -362,7 +363,9 @@ function ProjectIndex() {
             </FieldGroup>
             <DialogFooter>
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Saving..." : "Save"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -492,9 +495,8 @@ function ProjectIndex() {
               <Field>
                 <Label htmlFor="tag">Tags</Label>
                 <ReactSelect
-                  defaultValue={frameworks[1]}
                   isMulti
-                  name="frameworks"
+                  name="tag"
                   options={tagOptions}
                   value={formData.tags}
                   onChange={(selected) =>
@@ -565,7 +567,9 @@ function ProjectIndex() {
             </FieldGroup>
             <DialogFooter>
               <DialogClose render={<Button variant="outline">Cancel</Button>} />
-              <Button type="submit">Save</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Updating..." : "Update"}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
