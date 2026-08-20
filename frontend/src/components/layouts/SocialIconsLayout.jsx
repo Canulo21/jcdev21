@@ -27,11 +27,11 @@ function SocialIconsLayout() {
         className="hidden lg:flex fixed bottom-20 z-[10] right-5 2xl:right-20"
       >
         <div className="flex gap-4 social-icons-group flex-col w-fit ">
-          {socials.map((item) => (
+          {socials.map((item, i) => (
             <a
               className="text-3xl hover:text-[var(--text-secondary)]"
-              key={item.id}
               href={item.link}
+              key={i}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={item.title}

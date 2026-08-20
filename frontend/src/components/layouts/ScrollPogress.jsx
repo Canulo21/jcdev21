@@ -25,6 +25,7 @@ export default function ScrollProgress() {
   return (
     <Progress
       value={progress}
+      aria-label="Page scroll progress"
       className="fixed top-0 left-0 z-[9999] h-1 w-full rounded-none bg-transparent"
     />
   );

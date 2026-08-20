@@ -33,7 +33,6 @@ function Certificates() {
   const getCertificates = async () => {
     try {
       const data = await apiFetch("certifications");
-      console.log("cert", data);
       setGetCertificate(data);
     } catch (err) {
       console.error("Failed to fetch certificates:", err);

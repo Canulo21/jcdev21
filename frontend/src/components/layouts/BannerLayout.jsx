@@ -51,9 +51,7 @@ function BannerLayout() {
               showCursor
               cursorCharacter="_"
               deletingSpeed={50}
-              variableSpeedEnabled={false}
-              variableSpeedMin={60}
-              variableSpeedMax={120}
+              variableSpeed={false}
               cursorBlinkDuration={0.5}
             />
 

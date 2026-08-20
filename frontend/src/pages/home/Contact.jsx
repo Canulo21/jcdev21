@@ -3,6 +3,7 @@ import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import me from "../../assets/images/me-contact.png";
+import { div } from "three/src/nodes/math/OperatorNode.js";
 
 const contacts = [
   {
@@ -44,33 +45,38 @@ function Contact() {
           className="flex flex-col gap-6 w-full lg:w-[60%] pb-[40px] lg:pb-[100px]"
         >
           {contacts.map((item, i) => (
-            <a
-              href={
-                item.title === "Email"
-                  ? `mailto:${item.link}`
-                  : `https://${item.link}`
-              }
-              target={item.title === "Email" ? undefined : "_blank"}
-              rel={item.title === "Email" ? undefined : "noopener noreferrer"}
-            >
-              <div className="flex items-center gap-6 sm:gap-4 xl:gap-6 border border-white/40 rounded-lg py-4 px-6 hover:bg-[var(--bg-secondary)] transition-all duration-300 ease-in-out relative top-0 hover:-top-3">
-                <span className="text-2xl tracking-widest font-bold">
-                  0{i + 1}
-                </span>
+            <div key={i}>
+              <a
+                href={
+                  item.title === "Email"
+                    ? `mailto:${item.link}`
+                    : `https://${item.link}`
+                }
+                target={item.title === "Email" ? undefined : "_blank"}
+                rel={item.title === "Email" ? undefined : "noopener noreferrer"}
+              >
+                <div className="flex items-center gap-6 sm:gap-4 xl:gap-6 border border-white/40 rounded-lg py-4 px-6 hover:bg-[var(--bg-secondary)] transition-all duration-300 ease-in-out relative top-0 hover:-top-3">
+                  <span className="text-2xl tracking-widest font-bold">
+                    0{i + 1}
+                  </span>
 
-                <span className="p-3 bg-gray-800 rounded-full text-2xl sm:text-lg xl:text-2xl">
-                  {item.icon}
-                </span>
+                  <span
+                    className="p-3 bg-gray-800 rounded-full text-2xl sm:text-lg xl:text-2xl"
+                    aria-label={item.title}
+                  >
+                    {item.icon}
+                  </span>
 
-                <span className="text-xl sm:text-md xl:text-xl inline-block w-[80px] xl:w-[100px]">
-                  {item.title}
-                </span>
+                  <span className="text-xl sm:text-md xl:text-xl inline-block w-[80px] xl:w-[100px]">
+                    {item.title}
+                  </span>
 
-                <span className="hidden sm:block text-sm xl:text-md">
-                  {item.link}
-                </span>
-              </div>
-            </a>
+                  <span className="hidden sm:block text-sm xl:text-md">
+                    {item.link}
+                  </span>
+                </div>
+              </a>
+            </div>
           ))}
         </div>
         <div

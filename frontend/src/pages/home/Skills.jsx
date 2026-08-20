@@ -156,9 +156,9 @@ function Skills() {
       {/* Fronted */}
 
       <div className="group">
-        <h6 className="text-muted-foreground text-w-line group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
+        <p className="text-muted-foreground text-w-line font-xl font-medium group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
           Fronted
-        </h6>
+        </p>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {frontends.map((frontend, i) => {
@@ -172,7 +172,11 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
+                    <Icon
+                      aria-label={frontend.title}
+                      role="img"
+                      className="text-2xl md:text-4xl text-[var(--bg-secondary)]"
+                    />
                   )}
                   <p className="font-medium text-[10px] md:!text-sm truncate text-center">
                     {frontend.title}
@@ -185,9 +189,9 @@ function Skills() {
       </div>
 
       <div className="group">
-        <h6 className="text-muted-foreground text-w-line group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
+        <p className="text-muted-foreground text-w-line font-xl font-medium group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
           Backend & Data
-        </h6>
+        </p>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {backends.map((backend, i) => {
@@ -216,9 +220,9 @@ function Skills() {
       {/* CMS & E-commerce */}
 
       <div className="group">
-        <h6 className="text-muted-foreground text-w-line group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
+        <p className="text-muted-foreground text-w-line font-xl font-medium group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
           CMS & E-commerce
-        </h6>
+        </p>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {cms.map((cm, i) => {
@@ -247,9 +251,9 @@ function Skills() {
       {/* Tools & Integrations */}
 
       <div className="group">
-        <h6 className="text-muted-foreground text-w-line group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
+        <p className="text-muted-foreground text-w-line font-xl font-medium group-hover:text-[var(--bg-secondary)] transition-all duration-300 ease-in-out">
           Tools & Integrations
-        </h6>
+        </p>
 
         <div className="grid pb-0 grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-2 md:gap-4 xl:gap-8 py-6 sm:py-10">
           {tools.map((tool, i) => {

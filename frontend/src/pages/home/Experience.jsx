@@ -86,17 +86,15 @@ export default function Experience() {
                     {company.company_addresse}
                   </Typography>
                   {company.company_website ? (
-                    <Typography className="text-muted-foreground !font-medium !text-xs !mt-2">
-                      <div className="holder-link flex">
-                        <a
-                          href={company.company_website}
-                          target="_blank"
-                          rel="noopener"
-                          className="flex items-center gap-2  w-fit hover:text-[var(--text-secondary)]"
-                        >
-                          <FaGlobe /> Website
-                        </a>
-                      </div>
+                    <Typography className="text-muted-foreground !font-medium !text-xs !mt-2 holder-link flex">
+                      <a
+                        href={company.company_website}
+                        target="_blank"
+                        rel="noopener"
+                        className="flex items-center gap-2  w-fit hover:text-[var(--text-secondary)]"
+                      >
+                        <FaGlobe /> Website
+                      </a>
                     </Typography>
                   ) : null}
                 </TimelineOppositeContent>

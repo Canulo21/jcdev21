@@ -94,18 +94,18 @@ function Projects() {
         <div data-aos="fade-down">
           <div className="flex items-center justify-center gap-4 md:gap-8 [&>*+*]:border-l md:[&>*+*]:pl-8 [&>*+*]:pl-4">
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 5+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Years Experience
               </p>
             </div>
 
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 {totalWPProj}+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Projects
               </p>
@@ -227,18 +227,18 @@ function Projects() {
         <div data-aos="fade-down">
           <div className="flex items-center justify-center gap-4 md:gap-8 [&>*+*]:border-l md:[&>*+*]:pl-8 [&>*+*]:pl-4">
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 2+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Years Experience
               </p>
             </div>
 
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 {totalFullStack}+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Projects
               </p>
@@ -346,18 +346,18 @@ function Projects() {
         <div data-aos="fade-down">
           <div className="flex items-center justify-center gap-4 md:gap-8 [&>*+*]:border-l md:[&>*+*]:pl-8 [&>*+*]:pl-4">
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 2+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Years Experience
               </p>
             </div>
 
             <div>
-              <h3 className="!text-4xl sm:!text-5xl md:!text-7xl text-center">
+              <p className="text-4xl sm:text-5xl md:!text-7xl font-bold text-center">
                 {totalFrontend}+
-              </h3>
+              </p>
               <p className="font-bold text-sm md:text-base leading-4 md:leading-2 tracking-widest text-[var(--text-secondary)] text-center">
                 Projects
               </p>
