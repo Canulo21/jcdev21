@@ -2,9 +2,9 @@ import React from "react";
 import RippleGrid from "./utils/RippleGrid";
 import TextType from "./utils/TextType";
 import WarpText from "./utils/WarpText";
-import me from "../../assets/images/jc-hd.png";
+import me from "../../assets/images/jc-hd.webp";
 import { Button } from "../ui/button";
-import { FaFileDownload, FaPaperclip, FaRegNewspaper } from "react-icons/fa";
+import { FaFileDownload } from "react-icons/fa";
 
 function BannerLayout() {
   return (
@@ -77,6 +77,8 @@ function BannerLayout() {
           <img
             src={me}
             alt="Jhon Carlo Canulo"
+            fetchPriority="high"
+            loading="eager"
             className="relative z-[5]  w-[60%] lg:w-[45%] brightness-85 saturate-80"
           />
         </div>

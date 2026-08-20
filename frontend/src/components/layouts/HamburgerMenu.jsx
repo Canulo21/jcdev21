@@ -135,7 +135,9 @@ function HamburgerMenu() {
       onOpenChange={handleDrawerOpenChange}
     >
       <DrawerTrigger asChild>
-        <GiHamburgerMenu size={30} />
+        <button type="button" aria-label="Open menu" className="cursor-pointer">
+          <GiHamburgerMenu aria-hidden="true" size={30} />
+        </button>
       </DrawerTrigger>
       <DrawerContent className="bg-[var(--bg-primary)] text-white py-8 px-4 border-l-[var(--bg-secondary)] !border-l-4">
         <DrawerHeader>

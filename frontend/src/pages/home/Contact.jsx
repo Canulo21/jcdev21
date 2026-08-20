@@ -2,28 +2,27 @@ import BlurText from "@/components/layouts/utils/BlurText";
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import me from "../../assets/images/me-contact.png";
-import { div } from "three/src/nodes/math/OperatorNode.js";
+import me from "../../assets/images/me-contact.webp";
 
 const contacts = [
   {
     title: "Email",
-    icon: <SiGmail />,
+    icon: SiGmail,
     link: "canulodev21@gmail.com",
   },
   {
     title: "Facebook",
-    icon: <FaFacebook />,
+    icon: FaFacebook,
     link: "facebook.com/jhoncarlo.canulo/",
   },
   {
     title: "LinkedIn",
-    icon: <FaLinkedin />,
+    icon: FaLinkedin,
     link: "linkedin.com/in/jhon-carlo-canulo-116013227/",
   },
   {
     title: "Github",
-    icon: <FaGithub />,
+    icon: FaGithub,
     link: "github.com/Canulo21",
   },
 ];
@@ -44,40 +43,47 @@ function Contact() {
           data-aos="fade-right"
           className="flex flex-col gap-6 w-full lg:w-[60%] pb-[40px] lg:pb-[100px]"
         >
-          {contacts.map((item, i) => (
-            <div key={i}>
-              <a
-                href={
-                  item.title === "Email"
-                    ? `mailto:${item.link}`
-                    : `https://${item.link}`
-                }
-                target={item.title === "Email" ? undefined : "_blank"}
-                rel={item.title === "Email" ? undefined : "noopener noreferrer"}
-              >
-                <div className="flex items-center gap-6 sm:gap-4 xl:gap-6 border border-white/40 rounded-lg py-4 px-6 hover:bg-[var(--bg-secondary)] transition-all duration-300 ease-in-out relative top-0 hover:-top-3">
-                  <span className="text-2xl tracking-widest font-bold">
-                    0{i + 1}
-                  </span>
+          {contacts.map((item, i) => {
+            const Icon = item.icon;
 
-                  <span
-                    className="p-3 bg-gray-800 rounded-full text-2xl sm:text-lg xl:text-2xl"
-                    aria-label={item.title}
-                  >
-                    {item.icon}
-                  </span>
+            return (
+              <div key={i}>
+                <a
+                  href={
+                    item.title === "Email"
+                      ? `mailto:${item.link}`
+                      : `https://${item.link}`
+                  }
+                  target={item.title === "Email" ? undefined : "_blank"}
+                  rel={
+                    item.title === "Email" ? undefined : "noopener noreferrer"
+                  }
+                >
+                  <div className="relative top-0 flex items-center gap-6 rounded-lg border border-white/40 px-6 py-4 transition-all duration-300 ease-in-out hover:-top-3 hover:bg-[var(--bg-secondary)] sm:gap-4 xl:gap-6">
+                    <span className="text-2xl font-bold tracking-widest">
+                      0{contacts.indexOf(item) + 1}
+                    </span>
 
-                  <span className="text-xl sm:text-md xl:text-xl inline-block w-[80px] xl:w-[100px]">
-                    {item.title}
-                  </span>
+                    {Icon && (
+                      <Icon
+                        aria-label={item.title}
+                        role="img"
+                        className="p-3 bg-gray-800 rounded-full text-2xl sm:text-lg xl:text-2xl"
+                      />
+                    )}
 
-                  <span className="hidden sm:block text-sm xl:text-md">
-                    {item.link}
-                  </span>
-                </div>
-              </a>
-            </div>
-          ))}
+                    <span className="inline-block w-[80px] text-xl sm:text-md xl:w-[100px] xl:text-xl">
+                      {item.title}
+                    </span>
+
+                    <span className="hidden text-sm sm:block xl:text-md">
+                      {item.link}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            );
+          })}
         </div>
         <div
           data-aos="fade-left"

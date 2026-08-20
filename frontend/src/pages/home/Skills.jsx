@@ -205,7 +205,11 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
+                    <Icon
+                      aria-label={backend.title}
+                      role="img"
+                      className="text-2xl md:text-4xl text-[var(--bg-secondary)]"
+                    />
                   )}
                   <p className="font-medium text-[10px] md:!text-sm truncate text-center">
                     {backend.title}
@@ -236,7 +240,11 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
+                    <Icon
+                      aria-label={cm.title}
+                      role="img"
+                      className="text-2xl md:text-4xl text-[var(--bg-secondary)]"
+                    />
                   )}
                   <p className="font-medium text-[10px] md:!text-sm truncate text-center">
                     {cm.title}
@@ -267,7 +275,11 @@ function Skills() {
     ease-in-out py-6 px-2 rounded-md"
                 >
                   {Icon && (
-                    <Icon className="text-2xl md:text-4xl text-[var(--bg-secondary)]" />
+                    <Icon
+                      aria-label={tool.title}
+                      role="img"
+                      className="text-2xl md:text-4xl text-[var(--bg-secondary)]"
+                    />
                   )}
                   <p className="font-medium text-xs sm:text-[10px] md:!text-sm truncate text-center">
                     {tool.title}
