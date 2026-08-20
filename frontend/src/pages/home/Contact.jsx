@@ -92,6 +92,8 @@ function Contact() {
           <img
             className="brightness-85 saturate-80  w-[65%] sm:w-[35%] lg:w-full"
             src={me}
+            width="488"
+            height="605"
             alt="Jhon Carlo"
           />
         </div>
