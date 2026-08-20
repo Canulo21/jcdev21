@@ -158,7 +158,7 @@ function Projects() {
                             {item.title}
                           </p>
 
-                          <p className="my-4 text-sm line-clamp-3 text-white/70 ">
+                          <p className="my-4 text-sm text-white/70 ">
                             {item.description}
                           </p>
 
@@ -277,7 +277,7 @@ function Projects() {
                             {item.title}
                           </p>
 
-                          <p className="my-4 text-sm line-clamp-3 text-white/70 ">
+                          <p className="my-4 text-sm text-white/70 ">
                             {item.description}
                           </p>
 
@@ -396,7 +396,7 @@ function Projects() {
                             {item.title}
                           </p>
 
-                          <p className="my-4 text-sm line-clamp-3 text-white/70 ">
+                          <p className="my-4 text-sm text-white/70 ">
                             {item.description}
                           </p>
 
