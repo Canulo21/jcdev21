@@ -68,7 +68,7 @@ function Contact() {
                       <Icon
                         aria-label={item.title}
                         role="img"
-                        className="p-3 bg-gray-800 rounded-full text-2xl sm:text-lg xl:text-2xl"
+                        className="p-2 bg-gray-800 !text-white rounded-full text-4xl"
                       />
                     )}
 
