@@ -79,6 +79,8 @@ function BannerLayout() {
             alt="Jhon Carlo Canulo"
             fetchPriority="high"
             loading="eager"
+            width="628"
+            height="788"
             className="relative z-[5]  w-[60%] lg:w-[45%] brightness-85 saturate-80"
           />
         </div>
